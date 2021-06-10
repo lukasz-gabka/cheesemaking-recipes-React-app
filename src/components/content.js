@@ -6,13 +6,13 @@ import picture from '../images/cheese_wheels.jpg';
 
 function Content() {
     return (
-        <Container className="m-5">
+        <Container className="my-5 mx-auto">
             <Row>
-                <Col sm={6}>
+                <Col md={6}>
                     <Image src={picture} fluid/>
                 </Col>
 
-                <Col sm={6} className="my-auto">
+                <Col md={6} className="my-auto">
                     <p>Notatnik serowarski to aplikacja do tworzenia i przechowywania Twoich zapisków z produkcji domowego sera.</p>
                     <p>Zarejestruj się, jeżeli nie posiadasz jeszcze konta.</p>
                     <p>Zaloguj się, aby móc korzystać z aplikacji.</p>

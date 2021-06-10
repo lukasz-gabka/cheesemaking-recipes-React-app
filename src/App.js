@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/navbar';
 import Content from './components/content';
 import Login from './components/login';
@@ -7,11 +8,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      <Register />
+      <Switch>
+        <Route exact path="/">
+          <Content />
+        </Route>
+
+        <Route path="/logowanie">
+          <Login />
+        </Route>
+
+        <Route path="/rejestracja">
+          <Register />
+        </Route>
+      </Switch>
       <Footer />
-    </>
+    </Router> 
   );
 }
 

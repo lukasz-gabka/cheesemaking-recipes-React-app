@@ -3,22 +3,19 @@ const headers = {
     'Accept': 'application/json'
 }
 
-const getToken = async (url, email, password) => {
+const request = async (url, requestBody) => {
     const requestOptions = {
         method: 'POST',
         headers: headers,
-        body: JSON.stringify({ 
-            email: email,
-            password: password
-        })
+        body: JSON.stringify(requestBody)
     };
     const response = await fetch(url, requestOptions);
     if (response.ok) {
-        return await response.json();
+        return await response;
     } else {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     }
 }
 
-export default getToken;
+export default request;

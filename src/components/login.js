@@ -2,7 +2,7 @@ import React,  {useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import getToken from '../scripts/token';
+import request from '../scripts/request';
 import setCookie, { getCookie } from '../scripts/cookies';
 
 const url = "https://localhost:5001/user/login";
@@ -13,8 +13,13 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        const requestBody = {
+                email,
+                password
+            };
+
         try {
-            const token = await getToken(url, email, password);
+            const token = await request(url, requestBody);
             setCookie(token);
         } catch(e) {
             console.log(e.message);

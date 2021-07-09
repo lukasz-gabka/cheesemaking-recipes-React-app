@@ -1,4 +1,5 @@
 import React,  {useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -6,7 +7,7 @@ import request from '../scripts/request';
 
 const url = "https://localhost:5001/user/register";
 
-function Register() {
+function Register({history}) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -23,6 +24,7 @@ function Register() {
 
         try {
             await request(url, requestBody);
+            history.push('/');
         } catch (e) {
             console.log(e.message);
         }
@@ -57,4 +59,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default withRouter(Register);

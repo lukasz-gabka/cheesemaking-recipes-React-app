@@ -13,11 +13,11 @@ function Navigation() {
             </NavbarBrand>
 
             <Navbar.Collapse className="justify-content-end">
-                <Nav.Link>
-                    <Link to="/logowanie">Logowanie</Link>
+                <Nav.Link href="/logowanie">
+                    Logowanie
                 </Nav.Link>
-                <Nav.Link>
-                    <Link to="/rejestracja">Rejestracja</Link>
+                <Nav.Link href="/rejestracja">
+                    Rejestracja
                 </Nav.Link>
             </Navbar.Collapse>
         </Navbar>

@@ -11,7 +11,7 @@ const request = async (url, requestBody) => {
     };
     const response = await fetch(url, requestOptions);
     if (response.ok) {
-        return await response;
+        return response.status === 200 && await response.json();
     } else {
         const errorMessage = await response.text();
         throw new Error(errorMessage);

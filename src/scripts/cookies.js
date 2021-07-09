@@ -9,7 +9,8 @@ const getExpiry = () => {
 
 const options = {
     path: '/',
-    expires: getExpiry()
+    expires: getExpiry(),
+    sameSite: 'Strict'
 };
 
 const setCookie = (value) => {

@@ -1,6 +1,10 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import MainRoute from './components/mainRoute';
+import AuthRoute from './components/authRoute';
+import UnauthRoute from './components/unauthRoute';
 import Navbar from './components/navbar';
-import Content from './components/content';
+import Invitation from './components/invitation';
+import Main from './components/main';
 import Login from './components/login';
 import Register from './components/register';
 import Footer from './components/footer';
@@ -11,20 +15,12 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/">
-          <Content />
-        </Route>
-
-        <Route path="/logowanie">
-          <Login />
-        </Route>
-
-        <Route path="/rejestracja">
-          <Register />
-        </Route>
+        <MainRoute exact path="/" componentAuth={Main} componentUnauth={Invitation} />
+        <UnauthRoute exact path="/logowanie" component={Login} redirectTo={"/"} />
+        <UnauthRoute exact path="/rejestracja" component={Register} redirectTo={"/"} />
       </Switch>
       <Footer />
-    </Router> 
+    </Router>
   );
 }
 

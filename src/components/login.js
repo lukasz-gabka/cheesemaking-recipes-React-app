@@ -1,13 +1,14 @@
 import React,  {useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import request from '../scripts/request';
-import setCookie, { getCookie } from '../scripts/cookies';
+import setCookie from '../scripts/cookies';
 
 const url = "https://localhost:5001/user/login";
 
-function Login() {
+function Login({history}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,6 +22,7 @@ function Login() {
         try {
             const token = await request(url, requestBody);
             setCookie(token);
+            history.push('/');
         } catch(e) {
             console.log(e.message);
         }
@@ -45,4 +47,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default withRouter(Login);

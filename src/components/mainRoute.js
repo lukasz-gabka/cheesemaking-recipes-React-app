@@ -23,11 +23,11 @@ const MainRoute = (props) => {
             {...rest}
             render={() =>
                 isAuthenticated ? (
-                    <ComponentAuth {...props} />
+                    <ComponentAuth {...rest} />
                 ) : loading ? (
                     <div>WCZYTYWANIE...</div>
                 ) : (
-                    <ComponentUnauth {...props} />
+                    <ComponentUnauth {...rest} />
                 )
             }
         />

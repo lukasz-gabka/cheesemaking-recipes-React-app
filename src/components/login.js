@@ -5,8 +5,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import request from '../scripts/request';
 import setCookie from '../scripts/cookies';
+import { showNotification, LOGIN, STATUS_RED } from '../scripts/notifications';
+import { validateLogin } from '../scripts/validation';
 
-const url = "https://localhost:5001/user/login";
+const URL = "https://localhost:5001/user/login";
 
 function Login({history}) {
     const [email, setEmail] = useState('');
@@ -14,17 +16,22 @@ function Login({history}) {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const requestBody = {
+
+        try {
+            validateLogin(email, password);
+
+            const requestBody = {
                 email,
                 password
             };
-
-        try {
-            const token = await request(url, requestBody);
+            const token = await request(URL, requestBody);
             setCookie(token);
-            history.push('/');
+            history.push({
+                pathname: '/',
+                state: { loginSuccess: true }
+            });
         } catch(e) {
-            console.log(e.message);
+            showNotification(LOGIN, e.message, STATUS_RED);
         }
     }
 
@@ -41,7 +48,7 @@ function Login({history}) {
                     <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 </Form.Group>
 
-                <Button type="submit" onClick={handleLogin}>Zaloguj</Button>
+                <Button type="submit" onClick={e => handleLogin(e)}>Zaloguj</Button>
             </Form>
         </Container>
     )

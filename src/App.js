@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import MainRoute from './components/mainRoute';
 import AuthRoute from './components/authRoute';
@@ -8,11 +9,15 @@ import Main from './components/main';
 import Login from './components/login';
 import Register from './components/register';
 import Footer from './components/footer';
+import ReactNotification from 'react-notifications-component';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-notifications-component/dist/theme.css'
 
 function App() {
   return (
-    <Router>
+    <>
+      <ReactNotification />
+      <Router>
       <Navbar />
       <Switch>
         <MainRoute exact path="/" componentAuth={Main} componentUnauth={Invitation} />
@@ -21,6 +26,7 @@ function App() {
       </Switch>
       <Footer />
     </Router>
+    </>
   );
 }
 

@@ -16,7 +16,7 @@ const UnauthRoute = (props) => {
             setLoading(false);
         };
         fetchData();
-    }, [setIsAuthenticated]);
+    }, []);
 
     return (
         <Route

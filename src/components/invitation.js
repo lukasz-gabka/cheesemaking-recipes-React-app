@@ -3,8 +3,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import picture from '../images/cheese_wheels.jpg';
+import { showNotification, REGISTER, REGISTER_SUCCESS, STATUS_GREEN } from '../scripts/notifications';
 
-function Invitation() {
+function Invitation(props) {
+    if (props?.location?.state?.registerSuccess) {
+        showNotification(REGISTER, REGISTER_SUCCESS, STATUS_GREEN);
+        delete props.location.state.registerSuccess;
+    }
+
     return (
         <Container className="my-5 mx-auto">
             <Row>

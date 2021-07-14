@@ -3,6 +3,31 @@ const headers = {
     'Accept': 'application/json'
 }
 
+const isJson =  (input) => {
+    try {
+        var o = JSON.parse(input);
+        if (o && typeof o === "object") {
+            return true;
+        }
+    }
+    catch (e) { 
+        return false;
+    }
+    return false;
+};
+
+const parseError = async (response) => {
+    let errorMessage = await response.text();
+
+    if (isJson(errorMessage)) {
+        let errorObject = JSON.parse(errorMessage);
+        const errorArray = Object.values(errorObject.errors);
+        errorMessage = errorArray.join("\n")
+    }
+
+    return errorMessage;
+}
+
 const request = async (url, requestBody) => {
     const requestOptions = {
         method: 'POST',
@@ -13,7 +38,7 @@ const request = async (url, requestBody) => {
     if (response.ok) {
         return response.status === 200 && await response.json();
     } else {
-        const errorMessage = await response.text();
+        const errorMessage = await parseError(response);
         throw new Error(errorMessage);
     }
 }

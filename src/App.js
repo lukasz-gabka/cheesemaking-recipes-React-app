@@ -14,11 +14,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css'
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const fetchData = async () => {
     const result = await authenticate();
     setIsAuthenticated(result);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -26,7 +28,10 @@ function App() {
     }, []);
 
   return (
-    <>
+    loading ? (
+      <div>WCZYTYWANIE...</div>
+    ) : (
+      <>
       <ReactNotification />
       <Router>
         <Navbar isAuthenticated={isAuthenticated} />      
@@ -37,7 +42,8 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </>
+      </>
+    )
   );
 }
 

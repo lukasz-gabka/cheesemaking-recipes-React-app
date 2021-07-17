@@ -8,6 +8,7 @@ import HomePrivate from './components/home/homePrivate';
 import Login from './components/login';
 import Register from './components/register';
 import Footer from './components/footer';
+import Loading from './components/loading';
 import ReactNotification from 'react-notifications-component';
 import authenticate from './scripts/authentication';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,8 +21,13 @@ function App() {
   const fetchData = async () => {
     const result = await authenticate();
     setIsAuthenticated(result);
+    await sleep(500);
     setLoading(false);
   };
+
+  const sleep = (time) => {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
 
   useEffect(() => {
         fetchData();
@@ -29,7 +35,7 @@ function App() {
 
   return (
     loading ? (
-      <div>WCZYTYWANIE...</div>
+      <Loading />
     ) : (
       <>
       <ReactNotification />

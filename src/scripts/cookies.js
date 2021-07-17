@@ -1,7 +1,7 @@
 import moment from 'moment';
 import cookie from 'react-cookies';
 
-const name = "Authentication";
+const NAME = "Authentication";
 
 const getExpiry = () => {
     return moment().add(1, 'h').toDate();
@@ -14,15 +14,15 @@ const options = {
 };
 
 const setCookie = (value) => {
-    cookie.save(name, value, options);
+    cookie.save(NAME, value, options);
 };
 
 export const getCookie = () =>  {
-    return cookie.load(name);
+    return cookie.load(NAME);
 };
 
 export const deleteCookie = () => {
-    cookie.remove(name);
+    cookie.remove(NAME);
 };
 
 export default setCookie;

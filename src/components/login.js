@@ -1,4 +1,4 @@
-import React,  {useState } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -10,7 +10,7 @@ import { validateLogin } from '../scripts/validation';
 
 const URL = "https://localhost:5001/user/login";
 
-function Login({history}) {
+function Login({history, setIsAuthenticated}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -26,6 +26,7 @@ function Login({history}) {
             };
             const token = await request(URL, requestBody);
             setCookie(token);
+            setIsAuthenticated(true);
             history.push({
                 pathname: '/',
                 state: { loginSuccess: true }

@@ -1,9 +1,13 @@
-import { Nav, NavbarBrand } from 'react-bootstrap'
+import { NavbarBrand } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.png';
+import logo from '../../images/logo.png';
+import NavbarAuth from './navbarAuth';
+import NavbarUnauth from './navbarUnauth';
 
-function Navigation() {
+function Navigation(props) {
+    const {isAuthenticated} = props;
+
     return (
         <Navbar bg="light" variant="light">
             <NavbarBrand>
@@ -13,12 +17,11 @@ function Navigation() {
             </NavbarBrand>
 
             <Navbar.Collapse className="justify-content-end">
-                <Nav.Link href="/logowanie">
-                    Logowanie
-                </Nav.Link>
-                <Nav.Link href="/rejestracja">
-                    Rejestracja
-                </Nav.Link>
+                {isAuthenticated ? (
+                    <NavbarAuth />
+                ) : (
+                    <NavbarUnauth />
+                )}
             </Navbar.Collapse>
         </Navbar>
     )

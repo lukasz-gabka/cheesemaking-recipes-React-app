@@ -2,10 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-import picture from '../images/cheese_wheels.jpg';
-import { showNotification, REGISTER, REGISTER_SUCCESS, STATUS_GREEN } from '../scripts/notifications';
+import picture from '../../images/cheese_wheels.jpg';
+import { showNotification, REGISTER, REGISTER_SUCCESS, STATUS_GREEN } from '../../scripts/notifications';
 
-function Invitation(props) {
+function HomePublic(props) {
     if (props?.location?.state?.registerSuccess) {
         showNotification(REGISTER, REGISTER_SUCCESS, STATUS_GREEN);
         delete props.location.state.registerSuccess;
@@ -28,4 +28,4 @@ function Invitation(props) {
     )
 }
 
-export default Invitation;
+export default HomePublic;

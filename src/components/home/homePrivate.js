@@ -2,10 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-import picture from '../images/cheese_factory.jpg';
-import { showNotification, LOGIN, LOGIN_SUCCESS, STATUS_GREEN } from '../scripts/notifications';
+import picture from '../../images/cheese_factory.jpg';
+import { showNotification, LOGIN, LOGIN_SUCCESS, STATUS_GREEN } from '../../scripts/notifications';
 
-function Main(props) {
+function HomePrivate(props) {
     if (props?.location?.state?.loginSuccess) {
         showNotification(LOGIN, LOGIN_SUCCESS, STATUS_GREEN);
         delete props.location.state.loginSuccess;
@@ -26,4 +26,4 @@ function Main(props) {
     )
 }
 
-export default Main;
+export default HomePrivate;

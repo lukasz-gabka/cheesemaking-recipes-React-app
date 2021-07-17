@@ -3,7 +3,7 @@ const headers = {
     'Accept': 'application/json'
 }
 
-const isJson =  (input) => {
+const isJson = (input) => {
     try {
         var o = JSON.parse(input);
         if (o && typeof o === "object") {

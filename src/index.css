@@ -33,6 +33,10 @@ code {
   margin: 0 auto;
 }
 
+.navbar-collapse {
+  align-items: normal !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { deleteCookie } from "../../scripts/cookies";
 import { LOGOUT, LOGOUT_SUCCESS, showNotification, STATUS_GREEN } from "../../scripts/notifications";
 
-const NavbarAuth = (props) => {
+const NavSectionPrivate = (props) => {
         const logout =() => {
         deleteCookie();
         showNotification(LOGOUT, LOGOUT_SUCCESS, STATUS_GREEN);
@@ -16,4 +16,4 @@ const NavbarAuth = (props) => {
     );
 }
 
-export default NavbarAuth;
+export default NavSectionPrivate;

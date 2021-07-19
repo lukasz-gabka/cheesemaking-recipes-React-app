@@ -1,28 +1,34 @@
-import { NavbarBrand } from 'react-bootstrap'
-import Navbar from 'react-bootstrap/Navbar'
+import { NavbarBrand, Nav } from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import NavbarAuth from './navbarAuth';
-import NavbarUnauth from './navbarUnauth';
+import NavSectionPrivate from './navSectionPrivate';
+import NavSectionPublic from './navSectionPublic';
+import NavbarPrivate from './navbarPrivate';
 
 function Navigation(props) {
     const {isAuthenticated} = props;
 
     return (
-        <Navbar bg="light" variant="light">
+        <Navbar className="px-3" bg="light" variant="light" expand="md" >
             <NavbarBrand>
                 <Link to="/">
                     <img className="logo" src={logo} alt=""/>
                 </Link>
             </NavbarBrand>
 
-            <Navbar.Collapse className="justify-content-end">
-                {isAuthenticated ? (
-                    <NavbarAuth />
-                ) : (
-                    <NavbarUnauth />
-                )}
+            <Navbar.Toggle />
+            <Navbar.Collapse className="flex-column" >
+                <Nav className="justify-content-end" >
+                    {isAuthenticated ? (
+                        <NavSectionPrivate />
+                    ) : (
+                        <NavSectionPublic />
+                    )}
+                </Nav>
+                {isAuthenticated && <NavbarPrivate />}
             </Navbar.Collapse>
+            
         </Navbar>
     )
 }

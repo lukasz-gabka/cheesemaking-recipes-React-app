@@ -1,7 +1,7 @@
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const NavbarUnauth = (props) => {
+const NavSectionPublic = (props) => {
     return (
         <>
             <Nav.Link as={Link} to="/logowanie">
@@ -14,4 +14,4 @@ const NavbarUnauth = (props) => {
     );
 }
 
-export default NavbarUnauth;
+export default NavSectionPublic;

@@ -2,9 +2,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
-import picture from '../images/cheese_wheels.jpg';
+import picture from '../../images/cheese_factory.jpg';
+import { showNotification, LOGIN, LOGIN_SUCCESS, STATUS_GREEN } from '../../scripts/notifications';
 
-function Content() {
+function HomePrivate(props) {
+    if (props?.location?.state?.loginSuccess) {
+        showNotification(LOGIN, LOGIN_SUCCESS, STATUS_GREEN);
+        delete props.location.state.loginSuccess;
+    }
+
     return (
         <Container className="my-5 mx-auto">
             <Row>
@@ -13,13 +19,11 @@ function Content() {
                 </Col>
 
                 <Col md={6} className="my-auto">
-                    <p>Notatnik serowarski to aplikacja do tworzenia i przechowywania Twoich zapisków z produkcji domowego sera.</p>
-                    <p>Zarejestruj się, jeżeli nie posiadasz jeszcze konta.</p>
-                    <p>Zaloguj się, aby móc korzystać z aplikacji.</p>
+                    <p>Witaj zalogowany użytkowniku.</p>
                 </Col>
             </Row>
         </Container>
     )
 }
 
-export default Content;
+export default HomePrivate;

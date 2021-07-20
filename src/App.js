@@ -14,6 +14,8 @@ import authenticate from './scripts/authentication';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css';
 import { deleteCookie } from './scripts/cookies';
+import PrivateRoute from './components/route/privateRoute';
+import Note from './components/note';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -43,9 +45,38 @@ function App() {
       <Router>
         <Navbar isAuthenticated={isAuthenticated} />      
         <Switch>
-          <HomeRoute exact path="/" fetchData={fetchData} isAuthenticated={isAuthenticated} componentAuth={HomePrivate} componentUnauth={HomePublic} />
-          <PublicRoute exact path="/logowanie" fetchData={fetchData} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}  component={Login} redirectTo={"/"} />
-          <PublicRoute exact path="/rejestracja" fetchData={fetchData} isAuthenticated={isAuthenticated} component={Register} redirectTo={"/"} />
+          <HomeRoute 
+            exact path="/" 
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            componentAuth={HomePrivate} 
+            componentUnauth={HomePublic} 
+          />
+
+          <PublicRoute 
+            exact path="/logowanie" 
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            setIsAuthenticated={setIsAuthenticated} 
+            component={Login} 
+            redirectTo="/" 
+          />
+
+          <PublicRoute 
+            exact path="/rejestracja" 
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={Register} 
+            redirectTo="/" 
+          />
+
+          <PrivateRoute
+            exact path="/notatki"
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={Note} 
+            redirectTo="/"
+          />
         </Switch>
         <Footer />
       </Router>

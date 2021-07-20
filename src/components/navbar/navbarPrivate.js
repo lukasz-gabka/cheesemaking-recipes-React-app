@@ -1,9 +1,12 @@
 import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const NavbarPrivate = () => {
     return (
         <Nav className="justify-content-center">
-            Private navbar
+            <Nav.Link as={Link} to="/notatki">
+                Przeglądaj notatki
+            </Nav.Link>
         </Nav>
     );
 }

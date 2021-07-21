@@ -4,10 +4,10 @@ import { deleteCookie } from "../../scripts/cookies";
 import { LOGOUT, LOGOUT_SUCCESS, showNotification, STATUS_GREEN } from "../../scripts/notifications";
 
 const NavSectionPrivate = (props) => {
-        const logout =() => {
+    const logout =() => {
         deleteCookie();
         showNotification(LOGOUT, LOGOUT_SUCCESS, STATUS_GREEN);
-    }
+    };
 
     return (
         <Nav.Link as={Link} to="/" onClick={() => logout()}>

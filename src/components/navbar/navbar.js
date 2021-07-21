@@ -6,9 +6,7 @@ import NavSectionPrivate from './navSectionPrivate';
 import NavSectionPublic from './navSectionPublic';
 import NavbarPrivate from './navbarPrivate';
 
-function Navigation(props) {
-    const {isAuthenticated} = props;
-
+function Navigation({isAuthenticated}) {
     return (
         <Navbar className="px-3" bg="light" variant="light" expand="md" >
             <NavbarBrand>

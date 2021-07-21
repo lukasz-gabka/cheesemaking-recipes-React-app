@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import request from '../scripts/request';
 import setCookie from '../scripts/cookies';
-import { showNotification, LOGIN, STATUS_RED } from '../scripts/notifications';
+import { showNotification, LOGIN, LOGIN_SUCCESS, STATUS_RED, STATUS_GREEN } from '../scripts/notifications';
 import { validateLogin } from '../scripts/validation';
 
 const URL = "https://localhost:5001/user/login";
@@ -24,9 +24,10 @@ function Login({history, setIsAuthenticated}) {
                 email,
                 password
             };
-            const token = await request(URL, requestBody);
+            const token = await request(URL, 'POST', requestBody);
             setCookie(token);
             setIsAuthenticated(true);
+            showNotification(LOGIN, LOGIN_SUCCESS, STATUS_GREEN);
             history.push({
                 pathname: '/',
                 state: { loginSuccess: true }

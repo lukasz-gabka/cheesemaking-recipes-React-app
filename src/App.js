@@ -13,9 +13,8 @@ import ReactNotification from 'react-notifications-component';
 import authenticate from './scripts/authentication';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css';
-import { deleteCookie } from './scripts/cookies';
 import PrivateRoute from './components/route/privateRoute';
-import Note from './components/note';
+import NoteDisplay from './components/note/noteDisplay';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,7 +33,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-    }, []);
+    });
 
   return (
     loading ? (
@@ -74,7 +73,7 @@ function App() {
             exact path="/notatki"
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
-            component={Note} 
+            component={NoteDisplay} 
             redirectTo="/"
           />
         </Switch>

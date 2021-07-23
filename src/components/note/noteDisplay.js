@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { showNotification, SHOW_NOTES, SHOW_NOTES_ERROR, SHOW_NOTES_WARNING, STATUS_RED, STATUS_YELLOW } from '../../scripts/notifications';
 import NotePagination from './notePagination';
 import Note from './note';
+import { mountInputs } from '../../scripts/noteHandler';
 
 const URL = "https://localhost:5001/note";
 
@@ -24,6 +25,7 @@ const NoteDisplay = ({history}) => {
                     pathname: '/'
                 });
             } else {
+                mountInputs(noteArray);
                 setLastNoteIndex(noteArray.length - 1);
                 setNotes(noteArray);
             }
@@ -37,7 +39,7 @@ const NoteDisplay = ({history}) => {
             });
             showNotification(SHOW_NOTES, SHOW_NOTES_ERROR, STATUS_RED);
         }
-    }, [currentNoteIndex]);
+    }, [currentNoteIndex, history]);
 
     return (
         <Container className="my-5 mx-auto">

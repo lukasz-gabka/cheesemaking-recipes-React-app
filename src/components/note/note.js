@@ -1,6 +1,7 @@
 import Category from "./category";
 
 const Note = ({content}) =>{
+    console.log(content);
     return (
         <>
             <h1 className="text-center" >{content.name}</h1>

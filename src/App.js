@@ -14,7 +14,8 @@ import authenticate from './scripts/authentication';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css';
 import PrivateRoute from './components/route/privateRoute';
-import NoteDisplay from './components/note/noteDisplay';
+import NoteDisplay from './components/note/noteDisplay/noteDisplay';
+import noteAddDisplay from './components/note/noteAdd/noteAddDisplay';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -74,6 +75,14 @@ function App() {
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
             component={NoteDisplay} 
+            redirectTo="/"
+          />
+
+          <PrivateRoute
+            exact path="/dodaj-notatki"
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={noteAddDisplay} 
             redirectTo="/"
           />
         </Switch>

@@ -7,6 +7,10 @@ const NavbarPrivate = () => {
             <Nav.Link as={Link} to="/notatki">
                 Przeglądaj notatki
             </Nav.Link>
+
+            <Nav.Link as={Link} to="/dodaj-notatki">
+                Dodaj notatkę
+            </Nav.Link>
         </Nav>
     );
 }

@@ -37,6 +37,10 @@ code {
   align-items: normal !important;
 }
 
+.addNoteInput {
+  max-width: 40%;
+}
+
 footer {
   position: absolute;
   bottom: 0;

@@ -2,12 +2,13 @@ import { Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { authRequest } from '../../scripts/request';
+import { authRequest } from '../../../scripts/request';
 import { useEffect, useState } from 'react';
-import { showNotification, SHOW_NOTES, SHOW_NOTES_ERROR, SHOW_NOTES_WARNING, STATUS_RED, STATUS_YELLOW } from '../../scripts/notifications';
+import { showNotification, NOTES, NOTES_ERROR, NOTES_WARNING, 
+    STATUS_RED, STATUS_YELLOW } from '../../../scripts/notifications';
 import NotePagination from './notePagination';
 import Note from './note';
-import { mountInputs } from '../../scripts/noteHandler';
+import { mountInputs } from '../../../scripts/noteHandler';
 
 const URL = "https://localhost:5001/note";
 
@@ -20,7 +21,7 @@ const NoteDisplay = ({history}) => {
         const getNotes = async () => {
             const noteArray = await authRequest(URL, 'GET');
             if (!noteArray) {
-                showNotification(SHOW_NOTES, SHOW_NOTES_WARNING, STATUS_YELLOW);
+                showNotification(NOTES, NOTES_WARNING, STATUS_YELLOW);
                 history.push({
                     pathname: '/'
                 });
@@ -37,7 +38,7 @@ const NoteDisplay = ({history}) => {
             history.push({
                 pathname: '/'
             });
-            showNotification(SHOW_NOTES, SHOW_NOTES_ERROR, STATUS_RED);
+            showNotification(NOTES, NOTES_ERROR, STATUS_RED);
         }
     }, [currentNoteIndex, history]);
 

@@ -1,5 +1,4 @@
 const Label = ({content}) =>{
-    console.log(content);
     return (
         <div className="mb-3" >
             <h3 className="d-inline mx-5">

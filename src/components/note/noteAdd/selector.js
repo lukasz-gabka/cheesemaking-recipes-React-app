@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 
-const NoteAddSelector = ({selectedOption, templates, setSelectedOption}) => {
+const Selector = ({selectedOption, templates, setSelectedOption}) => {
     return (
         <Form.Control 
             value={selectedOption} 
@@ -21,4 +21,4 @@ const NoteAddSelector = ({selectedOption, templates, setSelectedOption}) => {
     );
 };
 
-export default NoteAddSelector;
+export default Selector;

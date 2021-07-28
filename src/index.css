@@ -41,6 +41,10 @@ code {
   max-width: 40%;
 }
 
+.addNoteTitle {
+  max-width: 60%;
+}
+
 footer {
   position: absolute;
   bottom: 0;

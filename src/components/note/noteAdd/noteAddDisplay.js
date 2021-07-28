@@ -6,10 +6,8 @@ import { authRequest } from '../../../scripts/request';
 import { useEffect, useState } from 'react';
 import { showNotification, NOTES_ERROR, 
     STATUS_RED, STATUS_YELLOW, TEMPLATES, TEMPLATES_WARNING } from '../../../scripts/notifications';
-import NoteAdd from './noteAdd';
-import NoteAddSelector from './noteAddSelector';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Note from './note';
+import Selector from './selector';
 
 const URL = "https://localhost:5001/template";
 
@@ -44,7 +42,7 @@ const NoteAddDisplay = ({history}) => {
         <Container className="my-5 mx-auto">
             <Row>
                 <Col>
-                    <NoteAddSelector 
+                    <Selector 
                         templates={templates} 
                         selectedOption={currentTemplateIndex}
                         setSelectedOption={setCurrentTemplateIndex}
@@ -54,18 +52,9 @@ const NoteAddDisplay = ({history}) => {
 
             <Row>
                 <Col>
-                    <Form>
-                        {templates && (
-                            <>
-                                <NoteAdd content={templates[currentTemplateIndex]} />
-                                {currentTemplateIndex >= 0 && 
-                                    <Button type="submit">
-                                        Zapisz notatkę
-                                    </Button>
-                                }
-                            </>
+                        {(templates && currentTemplateIndex >= 0) && (
+                            <Note history={history} content={templates[currentTemplateIndex]}/>
                         )}
-                    </Form>
                 </Col>
             </Row>
         </Container>

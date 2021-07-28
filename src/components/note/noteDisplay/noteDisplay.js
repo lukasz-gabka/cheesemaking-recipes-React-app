@@ -6,7 +6,7 @@ import { authRequest } from '../../../scripts/request';
 import { useEffect, useState } from 'react';
 import { showNotification, NOTES, NOTES_ERROR, NOTES_WARNING, 
     STATUS_RED, STATUS_YELLOW } from '../../../scripts/notifications';
-import NotePagination from './notePagination';
+import NotePagination from './pagination';
 import Note from './note';
 import { mountInputs } from '../../../scripts/noteHandler';
 

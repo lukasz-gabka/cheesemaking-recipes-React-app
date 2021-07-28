@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import NoteSelector from './noteSelector';
+import Selector from './selector';
 
 const NotePagination = ({notes, index, lastIndex, setIndex }) => {
     const [isFirstDisabled, setIsFirstDisabled] = useState(false);
@@ -49,7 +49,7 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
                 {'<'}
             </Pagination.Item>
 
-            <NoteSelector 
+            <Selector 
                 notes={notes} 
                 selectedOption={selectedOption} 
                 setIndex={setIndex} 

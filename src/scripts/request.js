@@ -53,7 +53,7 @@ const request = async (url, requestType, requestBody = null) => {
 export const authRequest  = async (url, requestType, requestBody = null) => {
     const token = getCookie();
     headers.Authorization = 'Bearer ' + token;
-    return request(url, requestType);
+    return request(url, requestType, requestBody);
 }
 
 export default request;

@@ -10,8 +10,7 @@ export const saveNote = async (e, inputs, name, templateId) => {
     if (body) {
         const fullUrl = URL + templateId; 
         await authRequest(fullUrl, 'POST', body);
-    } else {
-        showNotification(NOTES, ADD_NOTES_ERROR, STATUS_RED);
+        return true;
     }
 };
 

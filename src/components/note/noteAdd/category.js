@@ -1,6 +1,6 @@
 import Label from "./label";
 
-const CategoryAdd = ({content, inputs, categoryNumber, setInputs}) =>{
+const Category = ({content, inputs, categoryNumber, setInputs}) =>{
     var inputNumber = 1;
     return (
         <div className="mb-5">
@@ -19,4 +19,4 @@ const CategoryAdd = ({content, inputs, categoryNumber, setInputs}) =>{
     );
 };
 
-export default CategoryAdd;
+export default Category;

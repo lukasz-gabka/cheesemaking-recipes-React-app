@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CategoryAdd from "./categoryAdd";
+import Category from "./category";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { saveNote } from "../../../scripts/handleAddNote";
@@ -27,11 +27,13 @@ const Note = ({content, history}) =>{
 
     const handleAddNote = async (e) => {
         try {
-            await saveNote(e, inputs, name, content.id);
-            showNotification(NOTES, ADD_NOTES_SUCCESS, STATUS_GREEN);
-            history.push({
-                pathname: '/'
-            });
+            const result = await saveNote(e, inputs, name, content.id);
+            if (result) {
+                showNotification(NOTES, ADD_NOTES_SUCCESS, STATUS_GREEN);
+                history.push({
+                    pathname: '/'
+                });
+            }
         } catch(e) {
             showNotification(NOTES, ADD_NOTES_ERROR, STATUS_RED);
         }
@@ -50,7 +52,7 @@ const Note = ({content, history}) =>{
                             onChange={e => setName(e.target.value)}
                         />
                         {content.categories.map((category, index) => (
-                            <CategoryAdd 
+                            <Category 
                                 categoryNumber={categoryNumber++} 
                                 inputs={inputs} 
                                 setInputs={setInputs}

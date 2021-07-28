@@ -37,6 +37,11 @@ code {
   align-items: normal !important;
 }
 
+.NavLinkActive {
+  text-decoration: underline !important;
+  color: royalblue !important;
+}
+
 .addNoteInput {
   max-width: 40%;
 }

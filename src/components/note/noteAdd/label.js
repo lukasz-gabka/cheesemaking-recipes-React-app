@@ -14,7 +14,8 @@ const Label = ({content, inputs, categoryNumber, inputNumber, setInputs}) =>{
             </h3>
 
             <Form.Control 
-                type="text" 
+                as="textarea" 
+                rows="1"
                 value={inputs[inputName]}
                 className="d-inline-block addNoteInput" 
                 placeholder="Wpisz wartość..."

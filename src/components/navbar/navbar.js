@@ -10,7 +10,7 @@ function Navigation({isAuthenticated}) {
     return (
         <Navbar className="px-3" bg="light" variant="light" expand="md" >
             <NavbarBrand>
-                <Link to="/">
+                <Link to="/" activeClassName="activeLink" >
                     <img className="logo" src={logo} alt=""/>
                 </Link>
             </NavbarBrand>

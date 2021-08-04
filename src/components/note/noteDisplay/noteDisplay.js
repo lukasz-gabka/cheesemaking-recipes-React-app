@@ -18,22 +18,22 @@ const NoteDisplay = ({history}) => {
     const [lastNoteIndex, setLastNoteIndex] = useState(0);
 
     useEffect(() => {
-        const getNotes = async () => {
+        const handleGetNotes = async () => {
             const noteArray = await authRequest(URL, 'GET');
-            if (!noteArray) {
+            if (noteArray) {
+                mountInputs(noteArray);
+                setLastNoteIndex(noteArray.length - 1);
+                setNotes(noteArray);
+            } else {
                 showNotification(NOTES, NOTES_WARNING, STATUS_YELLOW);
                 history.push({
                     pathname: '/'
                 });
-            } else {
-                mountInputs(noteArray);
-                setLastNoteIndex(noteArray.length - 1);
-                setNotes(noteArray);
             }
-        }
+        };
 
         try {
-            getNotes();
+            handleGetNotes();
         } catch (e) {
             history.push({
                 pathname: '/'

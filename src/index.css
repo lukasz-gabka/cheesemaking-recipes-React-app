@@ -50,6 +50,11 @@ code {
   max-width: 60%;
 }
 
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
 footer {
   position: absolute;
   bottom: 0;

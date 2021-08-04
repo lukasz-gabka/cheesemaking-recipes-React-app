@@ -16,6 +16,7 @@ import 'react-notifications-component/dist/theme.css';
 import PrivateRoute from './components/route/privateRoute';
 import NoteDisplay from './components/note/noteDisplay/noteDisplay';
 import NoteAddDisplay from './components/note/noteAdd/noteAddDisplay';
+import NoteDeleteDisplay from './components/note/noteDelete/noteDeleteDisplay';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -83,6 +84,14 @@ function App() {
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
             component={NoteAddDisplay} 
+            redirectTo="/"
+          />
+
+          <PrivateRoute
+            exact path="/usun-notatki"
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={NoteDeleteDisplay} 
             redirectTo="/"
           />
         </Switch>

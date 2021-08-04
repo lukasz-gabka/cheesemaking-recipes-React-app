@@ -1,4 +1,4 @@
-import { showNotification, ADD_NOTES_EMPTY,NOTES, STATUS_YELLOW, ADD_NOTES_ERROR, STATUS_RED } from "./notifications";
+import { showNotification, ADD_NOTES_EMPTY,NOTES, STATUS_YELLOW } from "./notifications";
 import { authRequest } from "./request";
 
 const URL = 'https://localhost:5001/note/';

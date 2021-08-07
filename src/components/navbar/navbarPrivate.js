@@ -15,6 +15,10 @@ const NavbarPrivate = () => {
             <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/usun-notatki">
                 Usuń notatki
             </Nav.Link>
+
+            <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/modyfikuj-notatki">
+                Modyfikuj notatki
+            </Nav.Link>
         </Nav>
     );
 }

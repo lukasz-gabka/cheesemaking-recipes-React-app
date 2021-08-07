@@ -17,6 +17,7 @@ import PrivateRoute from './components/route/privateRoute';
 import NoteDisplay from './components/note/noteDisplay/noteDisplay';
 import NoteAddDisplay from './components/note/noteAdd/noteAddDisplay';
 import NoteDeleteDisplay from './components/note/noteDelete/noteDeleteDisplay';
+import noteModifyDisplay from './components/note/noteModify/noteModifyDisplay';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -92,6 +93,14 @@ function App() {
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
             component={NoteDeleteDisplay} 
+            redirectTo="/"
+          />
+
+          <PrivateRoute
+            exact path="/modyfikuj-notatki"
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={noteModifyDisplay} 
             redirectTo="/"
           />
         </Switch>

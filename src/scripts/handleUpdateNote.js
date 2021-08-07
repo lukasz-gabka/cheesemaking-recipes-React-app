@@ -1,15 +1,15 @@
-import { showNotification, NOTES_INPUTS_EMPTY,NOTES, STATUS_YELLOW } from "./notifications";
+import { showNotification, NOTES_INPUTS_EMPTY, NOTES, STATUS_YELLOW } from "./notifications";
 import { authRequest } from "./request";
 
 const URL = 'https://localhost:5001/note/';
 
-export const saveNote = async (e, inputs, name, templateId) => {
+export const updateNote = async (e, inputs, name, noteId) => {
     e.preventDefault();
     const body = prepareNote(inputs, name);
 
     if (body) {
-        const fullUrl = URL + templateId; 
-        await authRequest(fullUrl, 'POST', body);
+        const fullUrl = URL + noteId; 
+        await authRequest(fullUrl, 'PUT', body);
         return true;
     }
 };

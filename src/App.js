@@ -14,10 +14,10 @@ import authenticate from './scripts/authentication';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css';
 import PrivateRoute from './components/route/privateRoute';
-import NoteDisplay from './components/note/noteDisplay/noteDisplay';
-import NoteAddDisplay from './components/note/noteAdd/noteAddDisplay';
-import NoteDeleteDisplay from './components/note/noteDelete/noteDeleteDisplay';
-import noteModifyDisplay from './components/note/noteModify/noteModifyDisplay';
+import NoteDisplayView from './components/note/noteDisplay/noteDisplayView';
+import NoteAddView from './components/note/noteAdd/noteAddView';
+import NoteDeleteView from './components/note/noteDelete/noteDeleteView';
+import noteModifyView from './components/note/noteModify/noteModifyView';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -76,7 +76,7 @@ function App() {
             exact path="/notatki"
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
-            component={NoteDisplay} 
+            component={NoteDisplayView} 
             redirectTo="/"
           />
 
@@ -84,7 +84,7 @@ function App() {
             exact path="/dodaj-notatki"
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
-            component={NoteAddDisplay} 
+            component={NoteAddView} 
             redirectTo="/"
           />
 
@@ -92,7 +92,7 @@ function App() {
             exact path="/usun-notatki"
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
-            component={NoteDeleteDisplay} 
+            component={NoteDeleteView} 
             redirectTo="/"
           />
 
@@ -100,7 +100,7 @@ function App() {
             exact path="/modyfikuj-notatki"
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
-            component={noteModifyDisplay} 
+            component={noteModifyView} 
             redirectTo="/"
           />
         </Switch>

@@ -2,44 +2,26 @@ import { Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { authRequest } from '../../../scripts/request';
 import { useEffect, useState } from 'react';
-import { showNotification, NOTES, NOTES_ERROR, NOTES_WARNING, 
-    STATUS_RED, STATUS_YELLOW } from '../../../scripts/notifications';
 import NotePagination from './pagination';
 import Note from './note';
-import { mountInputs } from '../../../scripts/noteHandler';
+import { handleNotes, mountInputs } from '../../../scripts/entityHandler';
 
-const URL = "https://localhost:5001/note";
+const URI = "https://localhost:5001/note";
 
-const NoteDisplay = ({history}) => {
+const NoteDisplayView = ({history}) => {
     const [notes, setNotes] = useState(null);
     const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
     const [lastNoteIndex, setLastNoteIndex] = useState(0);
 
-    useEffect(() => {
-        const handleGetNotes = async () => {
-            const noteArray = await authRequest(URL, 'GET');
-            if (noteArray) {
-                mountInputs(noteArray);
-                setLastNoteIndex(noteArray.length - 1);
-                setNotes(noteArray);
-            } else {
-                showNotification(NOTES, NOTES_WARNING, STATUS_YELLOW);
-                history.push({
-                    pathname: '/'
-                });
-            }
-        };
+    const handleState = (noteArray) => {
+        mountInputs(noteArray);
+        setLastNoteIndex(noteArray.length - 1);
+        setNotes(noteArray);
+    };
 
-        try {
-            handleGetNotes();
-        } catch (e) {
-            history.push({
-                pathname: '/'
-            });
-            showNotification(NOTES, NOTES_ERROR, STATUS_RED);
-        }
+    useEffect(() => {
+        handleNotes(URI, handleState, history);
     }, [currentNoteIndex, history]);
 
     return (
@@ -64,4 +46,4 @@ const NoteDisplay = ({history}) => {
     );
 };
 
-export default withRouter(NoteDisplay);
+export default withRouter(NoteDisplayView);

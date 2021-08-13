@@ -55,6 +55,10 @@ code {
   justify-content: space-between;
 }
 
+.displayedInput {
+  white-space: pre-line;
+}
+
 footer {
   position: absolute;
   bottom: 0;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Category from "./category";
+import Category from "../category";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { saveNote } from "../../../scripts/handleAddNote";
-import { ADD_NOTES_ERROR, ADD_NOTES_SUCCESS, NOTES, showNotification, STATUS_RED, STATUS_GREEN } from "../../../scripts/notifications";
+import { ADD_NOTES_ERROR, ADD_NOTES_SUCCESS, showNotification, 
+    STATUS_RED, STATUS_GREEN, SUCCESS, ERROR } from "../../../scripts/notifications";
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});
@@ -29,13 +30,13 @@ const Note = ({content, history}) =>{
         try {
             const result = await saveNote(e, inputs, name, content.id);
             if (result) {
-                showNotification(NOTES, ADD_NOTES_SUCCESS, STATUS_GREEN);
+                showNotification(SUCCESS, ADD_NOTES_SUCCESS, STATUS_GREEN);
                 history.push({
                     pathname: '/'
                 });
             }
         } catch(e) {
-            showNotification(NOTES, ADD_NOTES_ERROR, STATUS_RED);
+            showNotification(ERROR, ADD_NOTES_ERROR, STATUS_RED);
         }
     };
 

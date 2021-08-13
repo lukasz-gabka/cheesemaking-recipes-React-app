@@ -1,12 +1,15 @@
-export const mountInputs = (notes) => {
-    notes.forEach((note) => {
-        var i = 0;
-        note.template.categories.forEach((category) => {
-            category.labels.forEach((label) => {
-                label.input = note.inputs[i];
-                i++;
-            });
+export const nameInputs = (note) => {
+    var names = {};
+    var categoryNumber = 1;
+    var inputIndex = 0;
+
+    note.template.categories.forEach((category) => {
+        var inputNumber = 1;
+        category.labels.forEach(() => {
+            names[`cat${categoryNumber}Input${inputNumber++}`] = note.inputs[inputIndex++].value;
         });
-        delete note.inputs;
+        categoryNumber++;
     });
+
+    return names;
 };

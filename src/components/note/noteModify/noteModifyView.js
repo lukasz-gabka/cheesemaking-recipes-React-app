@@ -2,40 +2,23 @@ import { Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { authRequest } from '../../../scripts/request';
 import { useEffect, useState } from 'react';
-import { showNotification, NOTES, NOTES_ERROR, NOTES_WARNING, 
-    STATUS_RED, STATUS_YELLOW } from '../../../scripts/notifications';
 import Selector from './selector';
 import Note from './note';
+import { handleNotes } from '../../../scripts/entityHandler';
 
-const URL = "https://localhost:5001/note";
+const URI = "https://localhost:5001/note";
 
-const NoteDisplay = ({history}) => {
+const NoteModifyView = ({history}) => {
     const [notes, setNotes] = useState(null);
     const [currentNoteIndex, setCurrentNoteIndex] = useState(-1);
 
-    useEffect(() => {
-        const handleGetNotes = async () => {
-            const noteArray = await authRequest(URL, 'GET');
-            if (noteArray) {
-                setNotes(noteArray);
-            } else {
-                showNotification(NOTES, NOTES_WARNING, STATUS_YELLOW);
-                history.push({
-                    pathname: '/'
-                });
-            }
-        };
+    const handleState = (noteArray) => {
+        setNotes(noteArray);
+    };
 
-        try {
-            handleGetNotes();
-        } catch (e) {
-            history.push({
-                pathname: '/'
-            });
-            showNotification(NOTES, NOTES_ERROR, STATUS_RED);
-        }
+    useEffect(() => {
+        handleNotes(URI, handleState, history);
     }, [currentNoteIndex, history]);
 
     return (
@@ -62,4 +45,4 @@ const NoteDisplay = ({history}) => {
     );
 };
 
-export default withRouter(NoteDisplay);
+export default withRouter(NoteModifyView);

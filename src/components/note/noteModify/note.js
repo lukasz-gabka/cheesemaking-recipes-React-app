@@ -1,10 +1,9 @@
-import Category from "./category";
+import Category from "../category";
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import { updateNote } from "../../../scripts/handleUpdateNote";
-import { showNotification, NOTES, MODIFY_NOTES_SUCCESS, MODIFY_NOTES_ERROR,
-     STATUS_GREEN, STATUS_RED } from "../../../scripts/notifications";
+import { handleUpdateNote } from "../../../scripts/updateNoteHandler";
+import { nameInputs } from "../../../scripts/noteHandler";
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});
@@ -12,35 +11,10 @@ const Note = ({content, history}) =>{
     var categoryNumber = 1;
 
     useEffect(() => {
-        var inputNames = {};
-        var categoryNumber = 1;
-        var inputIndex = 0;
-
-        content.template.categories.forEach((category) => {
-            var inputNumber = 1;
-            category.labels.forEach(() => {
-                inputNames[`cat${categoryNumber}Input${inputNumber++}`] = content.inputs[inputIndex++].value;
-            });
-            categoryNumber++;
-        });
+        const inputNames = nameInputs(content);
         setInputs(inputNames);
         setName(content.name);
-        console.log(inputs);
     }, [content]);
-
-    const handleUpdateNote = async (e) => {
-        try {
-            const result = await updateNote(e, inputs, name, content.id);
-            if (result) {
-                showNotification(NOTES, MODIFY_NOTES_SUCCESS, STATUS_GREEN);
-                history.push({
-                    pathname: '/'
-                });
-            }
-        } catch(e) {
-            showNotification(NOTES, MODIFY_NOTES_ERROR, STATUS_RED);
-        }
-    };
 
     return (
         <>
@@ -63,7 +37,10 @@ const Note = ({content, history}) =>{
                     />
                 )}
 
-                <Button type="submit" onClick={(e) => handleUpdateNote(e)}>
+                <Button 
+                    type="button" 
+                    onClick={() => handleUpdateNote(history, inputs, name, content.id)}
+                >
                     Zapisz zmiany
                 </Button>
             </Form>

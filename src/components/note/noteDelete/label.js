@@ -1,6 +1,6 @@
 const Label = ({label}) => {
     return (
-        <p className="mx-4">{label.name}: {label.input.value}</p>
+        <p className="mx-4 displayedInput">{label.name}: {label.input.value}</p>
     );
 };
 

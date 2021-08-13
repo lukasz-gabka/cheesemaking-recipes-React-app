@@ -4,7 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import request from '../scripts/request';
-import { showNotification, REGISTER, REGISTER_SUCCESS, STATUS_GREEN, STATUS_RED } from '../scripts/notifications';
+import { showNotification, REGISTER_SUCCESS, 
+    STATUS_GREEN, STATUS_RED, SUCCESS, ERROR } from '../scripts/notifications';
 import { validateRegister } from '../scripts/validation';
 
 const URL = "https://localhost:5001/user/register";
@@ -28,12 +29,12 @@ function Register({history}) {
                 confirmPassword
             };
             await request(URL, 'POST', requestBody);
-            showNotification(REGISTER, REGISTER_SUCCESS, STATUS_GREEN);
+            showNotification(SUCCESS, REGISTER_SUCCESS, STATUS_GREEN);
             history.push({
                 pathname: '/'
             });
         } catch (e) {
-            showNotification(REGISTER, e.message, STATUS_RED);
+            showNotification(ERROR, e.message, STATUS_RED);
         }
     };
 

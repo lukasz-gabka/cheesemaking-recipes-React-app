@@ -1,10 +1,8 @@
 import { store } from 'react-notifications-component';
 
-export const LOGIN = "Logowanie";
-export const REGISTER = "Rejestracja";
-export const LOGOUT = "Wylogowanie";
-export const NOTES = "Notatki";
-export const TEMPLATES = "Szablony";
+export const SUCCESS = "SUKCES";
+export const WARNING = "UWAGA";
+export const ERROR = "BŁĄD";
 export const LOGIN_SUCCESS = "Zalogowano poprawnie";
 export const REGISTER_SUCCESS = "Zarejestrowano poprawnie nowego użytkownika";
 export const LOGOUT_SUCCESS = "Wylogowano poprawnie";

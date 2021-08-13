@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import Selector from './selector';
+import Selector from '../selector';
 
 const NotePagination = ({notes, index, lastIndex, setIndex }) => {
     const [isFirstDisabled, setIsFirstDisabled] = useState(false);
@@ -8,6 +8,11 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
     const [isNextDisabled, setIsNextDisabled] = useState(false);
     const [isLastDisabled, setIsLastDisabled] = useState(false);
     const [selectedOption, setSelectedOption] = useState(0);
+
+    const handleClick = (value) => {
+        setIndex(value);
+        setSelectedOption(value);
+    };
 
     useEffect(() => {
         if (index === 0) {
@@ -31,26 +36,20 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
         <Pagination className="justify-content-center">
             <Pagination.Item 
                 disabled={isFirstDisabled} 
-                onClick={() => {
-                    setIndex(0);
-                    setSelectedOption(0);
-                }}
+                onClick={() => handleClick(0)}
             >
                 {'<<'}
             </Pagination.Item>
 
             <Pagination.Item 
                 disabled={isPreviousDisabled}
-                onClick={() => {
-                    setIndex(index - 1);
-                    setSelectedOption(index - 1);
-                }}
+                onClick={() => handleClick(index - 1)}
             >
                 {'<'}
             </Pagination.Item>
 
             <Selector 
-                notes={notes} 
+                entities={notes} 
                 selectedOption={selectedOption} 
                 setIndex={setIndex} 
                 setSelectedOption={setSelectedOption} 
@@ -58,20 +57,14 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
 
             <Pagination.Item 
                 disabled={isNextDisabled}
-                onClick={() => {
-                    setIndex(index + 1);
-                    setSelectedOption(index + 1);
-                }}
+                onClick={() => handleClick(index + 1)}
             >
                 {'>'}
             </Pagination.Item>
 
             <Pagination.Item 
             disabled={isLastDisabled}
-                onClick={() => {
-                    setIndex(lastIndex);
-                    setSelectedOption(lastIndex);
-                }}
+                onClick={() => handleClick(lastIndex)}
             >
                 {'>>'}
             </Pagination.Item>

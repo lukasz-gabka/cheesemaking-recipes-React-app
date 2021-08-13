@@ -5,7 +5,7 @@ const Label = ({content}) =>{
                 {content.name}:
             </h3>
 
-            <h4 className="d-inline">
+            <h4 className="d-inline displayedInput">
                 {content.input.value}
             </h4>
         </div>

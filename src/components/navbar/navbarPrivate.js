@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const NavbarPrivate = () => {
     return (
-        <Nav className="justify-content-center">
+        <Nav>
             <NavDropdown title="Notatki">
                 <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/notatki">
                     Przeglądaj notatki

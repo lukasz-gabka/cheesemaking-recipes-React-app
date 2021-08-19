@@ -16,15 +16,17 @@ function Navigation({isAuthenticated}) {
             </NavbarBrand>
 
             <Navbar.Toggle />
-            <Navbar.Collapse className="flex-column" >
-                <Nav className="justify-content-end" >
+            <Navbar.Collapse 
+                className={isAuthenticated ? "justify-content-between" : "justify-content-end"}
+            >
+                {isAuthenticated && <NavbarPrivate />}
+                <Nav>
                     {isAuthenticated ? (
                         <NavSectionPrivate />
                     ) : (
                         <NavSectionPublic />
                     )}
                 </Nav>
-                {isAuthenticated && <NavbarPrivate />}
             </Navbar.Collapse>
             
         </Navbar>

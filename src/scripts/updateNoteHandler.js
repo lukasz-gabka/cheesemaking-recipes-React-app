@@ -1,5 +1,6 @@
 import { showNotification, NOTES_INPUTS_EMPTY, STATUS_YELLOW, WARNING, SUCCESS, STATUS_GREEN, 
     ERROR, STATUS_RED, MODIFY_NOTES_ERROR, MODIFY_NOTES_SUCCESS} from "./notifications";
+import { redirectToHome } from "./redirection";
 import { authRequest } from "./request";
 
 const URL = 'https://localhost:5001/note/';
@@ -9,9 +10,7 @@ export const handleUpdateNote = async (history, inputs, name, id) => {
         const result = await updateNote(inputs, name, id);
         if (result) {
             showNotification(SUCCESS, MODIFY_NOTES_SUCCESS, STATUS_GREEN);
-            history.push({
-                pathname: '/'
-            });
+            redirectToHome(history);
         }
     } catch(e) {
         showNotification(ERROR, MODIFY_NOTES_ERROR, STATUS_RED);

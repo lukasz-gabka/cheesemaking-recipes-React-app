@@ -8,6 +8,7 @@ import setCookie from '../scripts/cookies';
 import { showNotification, SUCCESS, LOGIN_SUCCESS, STATUS_RED, 
     STATUS_GREEN, ERROR } from '../scripts/notifications';
 import { validateLogin } from '../scripts/validation';
+import { redirectToHome } from '../scripts/redirection';
 
 const URL = "https://localhost:5001/user/login";
 
@@ -29,10 +30,7 @@ function Login({history, setIsAuthenticated}) {
             setCookie(token);
             setIsAuthenticated(true);
             showNotification(SUCCESS, LOGIN_SUCCESS, STATUS_GREEN);
-            history.push({
-                pathname: '/',
-                state: { loginSuccess: true }
-            });
+            redirectToHome(history);
         } catch(e) {
             showNotification(ERROR, e.message, STATUS_RED);
         }

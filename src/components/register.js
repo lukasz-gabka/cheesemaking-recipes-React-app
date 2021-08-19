@@ -7,6 +7,7 @@ import request from '../scripts/request';
 import { showNotification, REGISTER_SUCCESS, 
     STATUS_GREEN, STATUS_RED, SUCCESS, ERROR } from '../scripts/notifications';
 import { validateRegister } from '../scripts/validation';
+import { redirectToHome } from '../scripts/redirection';
 
 const URL = "https://localhost:5001/user/register";
 
@@ -30,9 +31,7 @@ function Register({history}) {
             };
             await request(URL, 'POST', requestBody);
             showNotification(SUCCESS, REGISTER_SUCCESS, STATUS_GREEN);
-            history.push({
-                pathname: '/'
-            });
+            redirectToHome(history);
         } catch (e) {
             showNotification(ERROR, e.message, STATUS_RED);
         }

@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { saveNote } from "../../../scripts/handleAddNote";
 import { ADD_NOTES_ERROR, ADD_NOTES_SUCCESS, showNotification, 
     STATUS_RED, STATUS_GREEN, SUCCESS, ERROR } from "../../../scripts/notifications";
+import { redirectToHome } from "../../../scripts/redirection";
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});
@@ -31,9 +32,7 @@ const Note = ({content, history}) =>{
             const result = await saveNote(e, inputs, name, content.id);
             if (result) {
                 showNotification(SUCCESS, ADD_NOTES_SUCCESS, STATUS_GREEN);
-                history.push({
-                    pathname: '/'
-                });
+                redirectToHome(history);
             }
         } catch(e) {
             showNotification(ERROR, ADD_NOTES_ERROR, STATUS_RED);

@@ -1,22 +1,22 @@
 import Accordion from 'react-bootstrap/Accordion'
-import Category from './category';
 import Card from 'react-bootstrap/Card'
 import ExpandButton from '../../expandButton';
 import Button from 'react-bootstrap/Button';
-import { handleDeleteNote } from '../../../scripts/entityHandler';
+import Category from './category';
+import { handleDeleteTemplate } from '../../../scripts/entityHandler';
 
-const Note = ({note, history}) => {
+const Template = ({template, history}) => {
     return (
         <Accordion>
             <Card>
                 <Card.Header className="accordionHeader">
-                    {note.name}
+                    {template.name}
                     <div>
-                        <ExpandButton eventKey={note.id}>Click</ExpandButton>
+                        <ExpandButton eventKey={template.id}>Click</ExpandButton>
                         <Button 
                             className="bg-danger" 
                             type="button" 
-                            onClick={() => handleDeleteNote(note.id, history)}
+                            onClick={() => handleDeleteTemplate(template.id, history)}
                         >
                             Usuń
                         </Button>
@@ -24,9 +24,9 @@ const Note = ({note, history}) => {
                 </Card.Header>
                 
             </Card>
-            <Accordion.Collapse eventKey={note.id}>
+            <Accordion.Collapse eventKey={template.id}>
                 <Card.Body>
-                    {note.template.categories.map(
+                    {template.categories.map(
                         (category, index) => <Category key={index} category={category} />)
                     }
                 </Card.Body>
@@ -35,4 +35,4 @@ const Note = ({note, history}) => {
     );
 };
 
-export default Note;
+export default Template;

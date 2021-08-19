@@ -17,7 +17,8 @@ import PrivateRoute from './components/route/privateRoute';
 import NoteDisplayView from './components/note/noteDisplay/noteDisplayView';
 import NoteAddView from './components/note/noteAdd/noteAddView';
 import NoteDeleteView from './components/note/noteDelete/noteDeleteView';
-import noteModifyView from './components/note/noteModify/noteModifyView';
+import NoteModifyView from './components/note/noteModify/noteModifyView';
+import TemplateListView from './components/template/templateList/templateListView';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -100,7 +101,15 @@ function App() {
             exact path="/modyfikuj-notatki"
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
-            component={noteModifyView} 
+            component={NoteModifyView} 
+            redirectTo="/"
+          />
+
+          <PrivateRoute
+            exact path="/wykaz-szablonow"
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={TemplateListView} 
             redirectTo="/"
           />
         </Switch>

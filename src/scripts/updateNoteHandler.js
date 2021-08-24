@@ -1,4 +1,4 @@
-import { showNotification, NOTES_INPUTS_EMPTY, STATUS_YELLOW, WARNING, SUCCESS, STATUS_GREEN, 
+import { showNotification, INPUTS_EMPTY, STATUS_YELLOW, WARNING, SUCCESS, STATUS_GREEN, 
     ERROR, STATUS_RED, MODIFY_NOTES_ERROR, MODIFY_NOTES_SUCCESS} from "./notifications";
 import { redirectToHome } from "./redirection";
 import { authRequest } from "./request";
@@ -29,7 +29,7 @@ export const updateNote = async (inputs, name, noteId) => {
 
 const prepareNote = (inputs, name) => {
     if (isEachInputEmpty(inputs) || name === "") {
-        showNotification(WARNING, NOTES_INPUTS_EMPTY, STATUS_YELLOW);
+        showNotification(WARNING, INPUTS_EMPTY, STATUS_YELLOW);
         return false;
     } else {
         const inputValues  =  Object.values(inputs);

@@ -1,4 +1,4 @@
-import { showNotification, NOTES_INPUTS_EMPTY, STATUS_YELLOW, WARNING } from "./notifications";
+import { showNotification, INPUTS_EMPTY, STATUS_YELLOW, WARNING } from "./notifications";
 import { authRequest } from "./request";
 
 const URL = 'https://localhost:5001/note/';
@@ -16,7 +16,7 @@ export const saveNote = async (e, inputs, name, templateId) => {
 
 const prepareNote = (inputs, name) => {
     if (isEachInputEmpty(inputs) || name === "") {
-        showNotification(WARNING, NOTES_INPUTS_EMPTY, STATUS_YELLOW);
+        showNotification(WARNING, INPUTS_EMPTY, STATUS_YELLOW);
         return false;
     } else {
         const inputValues  =  Object.values(inputs);

@@ -59,6 +59,17 @@ code {
   white-space: pre-line;
 }
 
+.addTemplateList {
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+.addTemplateList li {
+  border: black solid 1px;
+  padding: 8px 32px 8px 32px;
+}
+
 footer {
   position: absolute;
   bottom: 0;

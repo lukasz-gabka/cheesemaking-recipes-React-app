@@ -19,6 +19,7 @@ import NoteAddView from './components/note/noteAdd/noteAddView';
 import NoteDeleteView from './components/note/noteDelete/noteDeleteView';
 import NoteModifyView from './components/note/noteModify/noteModifyView';
 import TemplateListView from './components/template/templateList/templateListView';
+import TemplateAddView from './components/template/templateAdd/templateAddView';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -110,6 +111,14 @@ function App() {
             fetchData={fetchData} 
             isAuthenticated={isAuthenticated} 
             component={TemplateListView} 
+            redirectTo="/"
+          />
+
+          <PrivateRoute
+            exact path="/dodaj-szablon"
+            fetchData={fetchData} 
+            isAuthenticated={isAuthenticated} 
+            component={TemplateAddView} 
             redirectTo="/"
           />
         </Switch>

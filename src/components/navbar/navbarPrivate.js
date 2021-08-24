@@ -26,6 +26,10 @@ const NavbarPrivate = () => {
                 <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/wykaz-szablonow">
                     Wykaz szablonów
                 </Nav.Link>
+
+                <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/dodaj-szablon">
+                    Dodaj szablon
+                </Nav.Link>
             </NavDropdown>
         </Nav>
     );

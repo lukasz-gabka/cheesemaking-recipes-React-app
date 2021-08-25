@@ -1,21 +1,15 @@
 import Button from 'react-bootstrap/Button';
 
-const AddLabelButton = ({list, setList, categoryName}) => {
+const AddLabelButton = ({list, setList, categoryIndex}) => {
     const handleAddLabel = () => {
-        const isLabel = list[categoryName]?.labels;
-        if (isLabel) {
-            const length = Object.keys(list[categoryName].labels).length;
-            const name = "label" + length;
-            var newList = {...list};
-            newList[categoryName].labels[name] = {name: ''};
-            setList(newList);
-        } else {
-            const name = "label0";
-            newList = {...list};
-            newList[categoryName].labels = {};
-            newList[categoryName].labels[name] = {name: ''};
-            setList(newList);
+        var newList = [...list];
+
+        if (!newList[categoryIndex]?.labels) {
+            newList[categoryIndex].labels = [];
         }
+
+        newList[categoryIndex].labels.push({name: ''});
+        setList(newList);
     };
 
     return (

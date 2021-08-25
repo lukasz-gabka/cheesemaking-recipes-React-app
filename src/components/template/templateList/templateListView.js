@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { withRouter } from 'react-router-dom';
-import { handleTemplates } from "../../../scripts/entityHandler";
+import { handleTemplates } from "../../../services/entityHandler";
 import Template from "./template";
 
 const URI = "https://localhost:5001/template";

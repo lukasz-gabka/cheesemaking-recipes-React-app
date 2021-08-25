@@ -5,18 +5,16 @@ import Row from 'react-bootstrap/Row';
 import { withRouter } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import AddCategoryButton from "./addCategoryButton";
-import Category from "./category";
-import AddLabelButton from "./addLabelButton";
-import Label from "./label";
 import Button from 'react-bootstrap/Button';
-import { saveTemplate } from "../../../scripts/handleAddTemplate";
+import { saveTemplate } from "../../../services/handleAddTemplate";
 import { showNotification, SUCCESS, STATUS_GREEN, STATUS_RED, ERROR, ADD_TEMPLATES_ERROR, 
-    ADD_TEMPLATES_SUCCESS } from "../../../scripts/notifications";
-import { redirectToHome } from "../../../scripts/redirection";    
+    ADD_TEMPLATES_SUCCESS } from "../../../services/notifications";
+import { redirectToHome } from "../../../services/redirection";    
+import Template from "./template";
 
 const TemplateAddView = ({history}) => {
     const [name, setName] = useState('');
-    const [list, setList] = useState({});
+    const [list, setList] = useState([]);
 
     const handleAddTemplate = async (e) => {
         try {
@@ -44,17 +42,7 @@ const TemplateAddView = ({history}) => {
                 </Col>
             </Row>
 
-            {(Object.keys(list).length > 0) && Object.entries(list).map(([key, value], index) => {
-                return (
-                    <>
-                        <Category key={index} list={list} setList={setList} name={key} />
-                        {value?.labels && Object.keys(value.labels).length > 0 && Object.entries(value.labels).map((label, index) => {
-                            return (<Label key={index} list={list} setList={setList} categoryName={key} name={Object.values(label)[0]} />);
-                        })}
-                        <AddLabelButton key={index+100} categoryName={key} list={list} setList={setList} />
-                    </>
-                );
-            })}
+            <Template list={list} setList={setList} />
             
             <Row>
                 <Col className="d-flex justify-content-center">
@@ -65,7 +53,7 @@ const TemplateAddView = ({history}) => {
             <Row>
                 <Col className="d-flex justify-content-center">
                     {Object.keys(list).length > 0 &&
-                        <Button type="button" className="addCategoryItem" onClick={(e) => handleAddTemplate(e)}>
+                        <Button type="button" onClick={(e) => handleAddTemplate(e)}>
                             Zapisz notatkę
                         </Button>
                     }

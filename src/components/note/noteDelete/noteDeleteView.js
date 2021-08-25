@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { withRouter } from 'react-router-dom';
 import Note from "./note";
-import { handleNotes, mountInputs } from "../../../scripts/entityHandler";
+import { handleNotes, mountInputs } from "../../../services/entityHandler";
 
 const URI = "https://localhost:5001/note";
 

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Category from "../category";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { saveNote } from "../../../scripts/handleAddNote";
+import { saveNote } from "../../../services/handleAddNote";
 import { ADD_NOTES_ERROR, ADD_NOTES_SUCCESS, showNotification, 
-    STATUS_RED, STATUS_GREEN, SUCCESS, ERROR } from "../../../scripts/notifications";
-import { redirectToHome } from "../../../scripts/redirection";
+    STATUS_RED, STATUS_GREEN, SUCCESS, ERROR } from "../../../services/notifications";
+import { redirectToHome } from "../../../services/redirection";
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});

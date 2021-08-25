@@ -2,9 +2,9 @@ import Button from 'react-bootstrap/Button';
 
 const AddCategoryButton = ({list, setList}) => {
     const handleAddCategory = () => {
-        const length = Object.keys(list).length;
-        const name = 'cat' + length;
-        setList({...list, [name]: {name: ''}});
+        var newList = [...list];
+        newList.push({name: ''});
+        setList(newList);
     };
 
     return (

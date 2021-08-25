@@ -10,7 +10,7 @@ import Register from './components/register';
 import Footer from './components/footer';
 import Loading from './components/loading';
 import ReactNotification from 'react-notifications-component';
-import authenticate from './scripts/authentication';
+import authenticate from './services/authentication';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css';
 import PrivateRoute from './components/route/privateRoute';

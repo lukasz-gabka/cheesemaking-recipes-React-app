@@ -1,7 +1,7 @@
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { deleteCookie } from "../../scripts/cookies";
-import { LOGOUT_SUCCESS, showNotification, STATUS_GREEN, SUCCESS } from "../../scripts/notifications";
+import { deleteCookie } from "../../services/cookies";
+import { LOGOUT_SUCCESS, showNotification, STATUS_GREEN, SUCCESS } from "../../services/notifications";
 
 const NavSectionPrivate = (props) => {
     const logout =() => {

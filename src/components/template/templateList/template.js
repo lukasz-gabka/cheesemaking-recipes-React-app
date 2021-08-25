@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 import ExpandButton from '../../expandButton';
 import Button from 'react-bootstrap/Button';
 import Category from './category';
-import { handleDeleteTemplate } from '../../../scripts/entityHandler';
+import { handleDeleteTemplate } from '../../../services/entityHandler';
 
 const Template = ({template, history}) => {
     return (

@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import { useEffect, useState } from 'react';
 import Note from './note';
 import Selector from '../selector';
-import { handleTemplates } from '../../../scripts/entityHandler';
+import { handleTemplates } from '../../../services/entityHandler';
 
 const URI = "https://localhost:5001/template";
 

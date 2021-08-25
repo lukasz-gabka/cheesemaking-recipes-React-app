@@ -22,24 +22,9 @@ const prepareTemplate = (inputs, name) => {
         showNotification(WARNING, LABELS_EMPTY, STATUS_YELLOW);
         return false;
     } else {
-        var categoriesBody = [];
-        var labelsBody = [];
-
-        Object.values(inputs).forEach((input) => {
-            Object.values(input.labels).forEach((label) => {
-                labelsBody.push({name: label.name});
-            });
-
-            categoriesBody.push({
-                name: input.name,
-                labels: labelsBody
-            });
-            labelsBody = [];
-        });
-
         const template = {
             name: name,
-            categories: categoriesBody
+            categories: inputs
         }
 
         return template;

@@ -3,12 +3,12 @@ import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import request from '../scripts/request';
-import setCookie from '../scripts/cookies';
+import request from '../services/request';
+import setCookie from '../services/cookies';
 import { showNotification, SUCCESS, LOGIN_SUCCESS, STATUS_RED, 
-    STATUS_GREEN, ERROR } from '../scripts/notifications';
-import { validateLogin } from '../scripts/validation';
-import { redirectToHome } from '../scripts/redirection';
+    STATUS_GREEN, ERROR } from '../services/notifications';
+import { validateLogin } from '../services/validation';
+import { redirectToHome } from '../services/redirection';
 
 const URL = "https://localhost:5001/user/login";
 

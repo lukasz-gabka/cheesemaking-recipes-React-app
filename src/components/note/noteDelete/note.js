@@ -3,7 +3,7 @@ import Category from './category';
 import Card from 'react-bootstrap/Card'
 import ExpandButton from '../../expandButton';
 import Button from 'react-bootstrap/Button';
-import { handleDeleteNote } from '../../../scripts/entityHandler';
+import { handleDeleteNote } from '../../../services/entityHandler';
 
 const Note = ({note, history}) => {
     return (

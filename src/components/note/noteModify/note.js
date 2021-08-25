@@ -2,8 +2,8 @@ import Category from "../category";
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import { handleUpdateNote } from "../../../scripts/updateNoteHandler";
-import { nameInputs } from "../../../scripts/noteHandler";
+import { handleUpdateNote } from "../../../services/updateNoteHandler";
+import { nameInputs } from "../../../services/noteHandler";
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});

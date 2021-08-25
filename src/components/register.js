@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import request from '../scripts/request';
+import request from '../services/request';
 import { showNotification, REGISTER_SUCCESS, 
-    STATUS_GREEN, STATUS_RED, SUCCESS, ERROR } from '../scripts/notifications';
-import { validateRegister } from '../scripts/validation';
-import { redirectToHome } from '../scripts/redirection';
+    STATUS_GREEN, STATUS_RED, SUCCESS, ERROR } from '../services/notifications';
+import { validateRegister } from '../services/validation';
+import { redirectToHome } from '../services/redirection';
 
 const URL = "https://localhost:5001/user/register";
 

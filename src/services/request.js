@@ -1,6 +1,9 @@
+import { getCookie } from "./cookies";
+
 const headers = { 
     'Content-Type': 'application/json',
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'Authorization': ''
 }
 
 const isJson = (input) => {
@@ -28,11 +31,15 @@ const parseError = async (response) => {
     return errorMessage;
 }
 
-const request = async (url, requestBody) => {
+const request = async (url, requestType, requestBody = null) => {
+    if (requestBody !== null) {
+        requestBody = JSON.stringify(requestBody);
+    }
+
     const requestOptions = {
-        method: 'POST',
+        method: requestType,
         headers: headers,
-        body: JSON.stringify(requestBody)
+        body: requestBody
     };
     const response = await fetch(url, requestOptions);
     if (response.ok) {
@@ -41,6 +48,12 @@ const request = async (url, requestBody) => {
         const errorMessage = await parseError(response);
         throw new Error(errorMessage);
     }
+}
+
+export const authRequest  = async (url, requestType, requestBody = null) => {
+    const token = getCookie();
+    headers.Authorization = 'Bearer ' + token;
+    return request(url, requestType, requestBody);
 }
 
 export default request;

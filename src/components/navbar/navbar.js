@@ -6,27 +6,27 @@ import NavSectionPrivate from './navSectionPrivate';
 import NavSectionPublic from './navSectionPublic';
 import NavbarPrivate from './navbarPrivate';
 
-function Navigation(props) {
-    const {isAuthenticated} = props;
-
+function Navigation({isAuthenticated}) {
     return (
         <Navbar className="px-3" bg="light" variant="light" expand="md" >
             <NavbarBrand>
-                <Link to="/">
+                <Link to="/" >
                     <img className="logo" src={logo} alt=""/>
                 </Link>
             </NavbarBrand>
 
             <Navbar.Toggle />
-            <Navbar.Collapse className="flex-column" >
-                <Nav className="justify-content-end" >
+            <Navbar.Collapse 
+                className={isAuthenticated ? "justify-content-between" : "justify-content-end"}
+            >
+                {isAuthenticated && <NavbarPrivate />}
+                <Nav>
                     {isAuthenticated ? (
                         <NavSectionPrivate />
                     ) : (
                         <NavSectionPublic />
                     )}
                 </Nav>
-                {isAuthenticated && <NavbarPrivate />}
             </Navbar.Collapse>
             
         </Navbar>

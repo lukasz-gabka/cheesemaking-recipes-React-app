@@ -1,11 +1,13 @@
-import React,  {useState } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import request from '../scripts/request';
-import { showNotification, REGISTER, STATUS_RED } from '../scripts/notifications';
-import { validateRegister } from '../scripts/validation';
+import request from '../services/request';
+import { showNotification, REGISTER_SUCCESS, 
+    STATUS_GREEN, STATUS_RED, SUCCESS, ERROR } from '../services/notifications';
+import { validateRegister } from '../services/validation';
+import { redirectToHome } from '../services/redirection';
 
 const URL = "https://localhost:5001/user/register";
 
@@ -27,13 +29,11 @@ function Register({history}) {
                 password,
                 confirmPassword
             };
-            await request(URL, requestBody);
-            history.push({
-                pathname: '/',
-                state: { registerSuccess: true }
-            });
+            await request(URL, 'POST', requestBody);
+            showNotification(SUCCESS, REGISTER_SUCCESS, STATUS_GREEN);
+            redirectToHome(history);
         } catch (e) {
-            showNotification(REGISTER, e.message, STATUS_RED);
+            showNotification(ERROR, e.message, STATUS_RED);
         }
     };
 

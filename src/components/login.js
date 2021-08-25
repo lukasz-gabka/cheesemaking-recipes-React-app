@@ -3,10 +3,12 @@ import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import request from '../scripts/request';
-import setCookie from '../scripts/cookies';
-import { showNotification, LOGIN, STATUS_RED } from '../scripts/notifications';
-import { validateLogin } from '../scripts/validation';
+import request from '../services/request';
+import setCookie from '../services/cookies';
+import { showNotification, SUCCESS, LOGIN_SUCCESS, STATUS_RED, 
+    STATUS_GREEN, ERROR } from '../services/notifications';
+import { validateLogin } from '../services/validation';
+import { redirectToHome } from '../services/redirection';
 
 const URL = "https://localhost:5001/user/login";
 
@@ -24,15 +26,13 @@ function Login({history, setIsAuthenticated}) {
                 email,
                 password
             };
-            const token = await request(URL, requestBody);
+            const token = await request(URL, 'POST', requestBody);
             setCookie(token);
             setIsAuthenticated(true);
-            history.push({
-                pathname: '/',
-                state: { loginSuccess: true }
-            });
+            showNotification(SUCCESS, LOGIN_SUCCESS, STATUS_GREEN);
+            redirectToHome(history);
         } catch(e) {
-            showNotification(LOGIN, e.message, STATUS_RED);
+            showNotification(ERROR, e.message, STATUS_RED);
         }
     }
 

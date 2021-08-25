@@ -37,6 +37,39 @@ code {
   align-items: normal !important;
 }
 
+.NavLinkActive {
+  text-decoration: underline !important;
+  color: royalblue !important;
+}
+
+.addNoteInput {
+  max-width: 40%;
+}
+
+.addNoteTitle {
+  max-width: 60%;
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.displayedInput {
+  white-space: pre-line;
+}
+
+.addTemplateList {
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+.addTemplateList li {
+  border: black solid 1px;
+  padding: 8px 32px 8px 32px;
+}
+
 footer {
   position: absolute;
   bottom: 0;

@@ -25,6 +25,10 @@ code {
   transform: translate(-50%, -50%);
 }
 
+#spinner {
+  margin: 0 auto;
+}
+
 .logo {
   max-height: 100px;
 }
@@ -35,8 +39,8 @@ code {
 
 .navButton,
 .navButton > a {
-  background-color: #f2a359;
-  border-radius: 15px;
+  background-color: #f2a359 !important;
+  border-radius: 15px !important;
   color: rgb(105, 105, 105) !important;
 }
 
@@ -44,7 +48,7 @@ code {
 .show .nav.item,
 .navButton:hover,
 .navButton:hover > a {
-  background-color: #e19248;
+  background-color: #e19248 !important;
   color: black !important;
 }
 
@@ -56,12 +60,6 @@ code {
   background-color: #f2dc5d !important;
 }
 
-.mainContent {
-  background-color: #eee2a0;
-  padding: 5%;
-  border-radius: 30px;
-}
-
 .navbar-toggler {
   color: #f2a359 !important;
   border-color: #f2a359 !important;
@@ -69,6 +67,15 @@ code {
 
 .navbar-light .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28242, 163, 89, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-collapse {
+  align-items: normal !important;
+}
+
+.NavLinkActive {
+  text-decoration: underline !important;
+  color: royalblue !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -88,19 +95,41 @@ code {
   .logoutButton {
     margin-top: 24px !important;
   }
+
+  .formContent {
+    max-width: 100% !important;
+  }
 }
 
-#spinner {
-  margin: 0 auto;
+.mainContent {
+  background-color: #eee2a0;
+  padding: 5%;
+  border-radius: 30px;
 }
 
-.navbar-collapse {
-  align-items: normal !important;
+.fextField {
+  border-color: #696969 !important;
 }
 
-.NavLinkActive {
-  text-decoration: underline !important;
-  color: royalblue !important;
+.fextField:focus {
+  border-color: #696969 !important;
+  background-color: #fff7db !important;
+  box-shadow: 0px 0px 24px 0px rgba(242, 163, 89, 1) !important;
+}
+
+.formContent {
+  max-width: 60%;
+}
+
+.button {
+  border-color: #f2a359 !important;
+}
+
+.button:active,
+.button:focus {
+  box-shadow: 0px 0px 16px 0px rgba(242, 163, 89, 1) !important;
+  background-color: #e19248 !important;
+  color: black !important;
 }
 
 .addNoteInput {

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { validateRegister } from '../services/validation';
 import request from '../services/request';
 import { showNotification, REGISTER_SUCCESS, 
     STATUS_GREEN, STATUS_RED, SUCCESS, ERROR } from '../services/notifications';
-import { validateRegister } from '../services/validation';
 import { redirectToHome } from '../services/redirection';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { withRouter } from 'react-router-dom';
 
-const URL = "https://localhost:5001/user/register";
+const URI = "https://localhost:5001/user/register";
 
 function Register({history}) {
     const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ function Register({history}) {
                 password,
                 confirmPassword
             };
-            await request(URL, 'POST', requestBody);
+            await request(URI, 'POST', requestBody);
             showNotification(SUCCESS, REGISTER_SUCCESS, STATUS_GREEN);
             redirectToHome(history);
         } catch (e) {
@@ -39,28 +39,58 @@ function Register({history}) {
 
     return (
         <Container className="my-5 mx-auto">
-            <Form>
-                <Form.Group controlId="registerFormEmail">
+            <Form className="mainContent mx-auto formContent">
+                <Form.Group className="mb-4 inputGroup" controlId="registerFormEmail">
                     <Form.Label>Adres e-mail</Form.Label>
-                    <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)}/>
+
+                    <Form.Control 
+                        className="fextField" 
+                        type="email" 
+                        value={email} 
+                        onChange={e => setEmail(e.target.value)}
+                    />
                 </Form.Group>
 
-                <Form.Group controlId="registerFormName">
+                <Form.Group className="mb-4 inputGroup" controlId="registerFormName">
                     <Form.Label>Imię</Form.Label>
-                    <Form.Control type="text" value={name} onChange={e => setName(e.target.value)}/>
+
+                    <Form.Control 
+                        className="fextField" 
+                        type="text" 
+                        value={name} 
+                        onChange={e => setName(e.target.value)}
+                    />
                 </Form.Group>
 
-                <Form.Group controlId="registerFormPassword">
+                <Form.Group className="mb-4 inputGroup" controlId="registerFormPassword">
                     <Form.Label>Hasło</Form.Label>
-                    <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+
+                    <Form.Control 
+                        className="fextField" 
+                        type="password" 
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)}
+                    />
                 </Form.Group>
 
-                <Form.Group controlId="registerFormConfirmPassword">
+                <Form.Group className="mb-4 inputGroup" controlId="registerFormConfirmPassword">
                     <Form.Label>Potwierdź hasło</Form.Label>
-                    <Form.Control type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+
+                    <Form.Control 
+                        className="fextField" 
+                        type="password" 
+                        value={confirmPassword} 
+                        onChange={e => setConfirmPassword(e.target.value)}
+                    />
                 </Form.Group>
 
-                <Button type="submit" onClick={handleRegister}>Zarejestruj</Button>
+                <Button 
+                    className="navButton button" 
+                    type="submit" 
+                    onClick={(e) => handleRegister(e)}
+                >
+                    Zarejestruj
+                </Button>
             </Form>
         </Container>
     )

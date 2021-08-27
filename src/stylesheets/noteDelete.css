@@ -1,0 +1,31 @@
+.card {
+  background-color: #fff7db;
+  border-color: #f2a359;
+}
+
+.deleteButton {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+.deleteButton:hover,
+.deleteButton:active,
+.deleteButton:focus {
+  background-color: #cb2434 !important;
+}
+
+.deleteButton:active,
+.deleteButton:focus {
+  box-shadow: 0px 0px 24px 0px rgba(203, 36, 52, 0.55) !important;
+}
+
+.card-header > p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.accordion-collapse {
+  background-color: #fff7db;
+  border-left: 1px solid #f2a359;
+  border-right: 1px solid #f2a359;
+}

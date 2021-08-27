@@ -1,22 +1,27 @@
-import Accordion from 'react-bootstrap/Accordion'
-import Category from './category';
-import Card from 'react-bootstrap/Card'
+import '../../../stylesheets/noteDelete.css';
+import { useState } from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import ExpandButton from '../../expandButton';
 import Button from 'react-bootstrap/Button';
-import { handleDeleteNote } from '../../../services/entityHandler';
+import Category from './category';
+import DeleteModal from '../../deleteModal';
 
 const Note = ({note, history}) => {
+    const [isModal, setIsModal] = useState(false);
+
     return (
+        <>
         <Accordion>
             <Card>
                 <Card.Header className="accordionHeader">
-                    {note.name}
+                    <p>{note.name}</p>
                     <div>
                         <ExpandButton eventKey={note.id}>Click</ExpandButton>
                         <Button 
-                            className="bg-danger" 
+                            className="mx-1 navButton button deleteButton" 
                             type="button" 
-                            onClick={() => handleDeleteNote(note.id, history)}
+                            onClick={() => setIsModal(true)}
                         >
                             Usuń
                         </Button>
@@ -32,6 +37,8 @@ const Note = ({note, history}) => {
                 </Card.Body>
             </Accordion.Collapse>
         </Accordion>
+        <DeleteModal isModal={isModal} setIsModal={setIsModal} id={note.id} history={history} />
+        </>
     );
 };
 

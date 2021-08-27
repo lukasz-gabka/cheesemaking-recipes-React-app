@@ -1,0 +1,76 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 56px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#spinner {
+  margin: 0 auto;
+}
+
+.mainContent {
+  background-color: #eee2a0;
+  padding: 5%;
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+  .contentText {
+    padding-top: 32px;
+  }
+}
+
+.addNoteInput {
+  max-width: 40%;
+}
+
+.addNoteTitle {
+  max-width: 60%;
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.displayedInput {
+  white-space: pre-line;
+}
+
+.addTemplateList {
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+.addTemplateList li {
+  border: black solid 1px;
+  padding: 8px 32px 8px 32px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

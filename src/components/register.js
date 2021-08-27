@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import '../stylesheets/form.css';
+import React, { useState, useEffect } from 'react';
+import { setTitle } from '../services/titleHandler';
 import { validateRegister } from '../services/validation';
 import request from '../services/request';
 import { showNotification, REGISTER_SUCCESS, 
@@ -10,12 +12,15 @@ import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 
 const URI = "https://localhost:5001/user/register";
+const TITLE = "Rejestracja";
 
 function Register({history}) {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    useEffect(() => setTitle(TITLE), []);
 
     const handleRegister = async (e) => {
         e.preventDefault();

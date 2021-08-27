@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 const Selector = ({selectedOption, entities, setSelectedOption, setIndex}) => {
     return (
         <Form.Control 
+            className="paginationElement selector"
             value={selectedOption} 
             as="select" 
             onChange={(e) => {

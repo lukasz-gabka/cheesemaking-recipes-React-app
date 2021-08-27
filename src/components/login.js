@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import '../stylesheets/form.css';
+import React, { useState, useEffect } from 'react';
+import { setTitle } from '../services/titleHandler';
 import { validateLogin } from '../services/validation';
 import request from '../services/request';
 import setCookie from '../services/cookies';
@@ -11,10 +13,13 @@ import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 
 const URI = "https://localhost:5001/user/login";
+const TITLE = "Logowanie";
 
 function Login({history, setIsAuthenticated}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(() => setTitle(TITLE), []);
 
     const handleLogin = async (e) => {
         e.preventDefault();

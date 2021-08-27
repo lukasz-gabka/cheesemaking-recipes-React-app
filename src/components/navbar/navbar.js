@@ -1,3 +1,4 @@
+import '../../stylesheets/navigation.css';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavbarBrand, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

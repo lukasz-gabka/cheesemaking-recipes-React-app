@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react';
 import Selector from './selector';
 import Note from './note';
 import { handleNotes } from '../../../services/entityHandler';
+import { setTitle } from '../../../services/titleHandler';
 
 const URI = "https://localhost:5001/note";
+const TITLE = "Modyfikuj notatki";
 
 const NoteModifyView = ({history}) => {
     const [notes, setNotes] = useState(null);
@@ -18,11 +20,12 @@ const NoteModifyView = ({history}) => {
     };
 
     useEffect(() => {
+        setTitle(TITLE);
         handleNotes(URI, handleState, history);
     }, [currentNoteIndex, history]);
 
     return (
-        <Container className="my-5 mx-auto">
+        <Container className="my-5 mx-auto mainContent">
             <Row>
                 <Col>
                     {notes && <Selector notes={notes} 

@@ -1,5 +1,6 @@
 .fextField {
   border-color: #696969 !important;
+  resize: both;
 }
 
 .fextField:focus {

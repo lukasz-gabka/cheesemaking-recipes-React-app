@@ -1,3 +1,4 @@
+import '../../stylesheets/noteModify.css';
 import Form from 'react-bootstrap/Form';
 
 const Label = ({content, inputs, categoryNumber, inputNumber, setInputs}) =>{
@@ -9,15 +10,15 @@ const Label = ({content, inputs, categoryNumber, inputNumber, setInputs}) =>{
 
     return (
         <div className="mb-3" >
-            <h3 className="d-inline-block mx-5">
+            <p className="d-inline-block labelName">
                 {content.name}:
-            </h3>
+            </p>
 
             <Form.Control 
+                className="d-inline-block addNoteInput fextField" 
                 as="textarea" 
                 rows="1"
                 value={inputs[inputName]}
-                className="d-inline-block addNoteInput" 
                 placeholder="Wpisz wartość..."
                 onChange={e => handleChange(e)}
             />

@@ -35,14 +35,9 @@ code {
   border-radius: 30px;
 }
 
-@media only screen and (max-width: 767px) {
-  .contentText {
-    padding-top: 32px;
-  }
-}
-
 .addNoteInput {
-  max-width: 40%;
+  min-width: 40%;
+  max-width: 85%;
 }
 
 .addNoteTitle {
@@ -73,4 +68,14 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .contentText {
+    padding-top: 32px;
+  }
+
+  .addNoteInput {
+    max-width: 70%;
+  }
 }

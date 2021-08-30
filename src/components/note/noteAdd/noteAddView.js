@@ -8,6 +8,7 @@ import Selector from '../selector';
 import { handleTemplates } from '../../../services/entityHandler';
 
 const URI = "https://localhost:5001/template";
+const SELECTOR_HEADER = "Wybierz szablon...";
 
 const NoteAddView = ({history}) => {
     const [templates, setTemplates] = useState(null);
@@ -22,13 +23,14 @@ const NoteAddView = ({history}) => {
     }, [history]);
 
     return (
-        <Container className="my-5 mx-auto">
+        <Container className="my-5 mx-auto mainContent">
             <Row>
                 <Col>
                     <Selector 
                         entities={templates} 
                         selectedOption={currentTemplateIndex}
                         setSelectedOption={setCurrentTemplateIndex}
+                        header={SELECTOR_HEADER}
                     />
                 </Col>
             </Row>

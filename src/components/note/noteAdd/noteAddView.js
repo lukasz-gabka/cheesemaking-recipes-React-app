@@ -1,13 +1,15 @@
-import { Col } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { setTitle } from '../../../services/titleHandler';
+import { handleTemplates } from '../../../services/entityHandler';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { useEffect, useState } from 'react';
-import Note from './note';
+import { Col } from 'react-bootstrap';
 import Selector from '../selector';
-import { handleTemplates } from '../../../services/entityHandler';
+import Note from './note';
+import { withRouter } from 'react-router-dom';
 
 const URI = "https://localhost:5001/template";
+const TITLE = "Dodaj notatkę";
 const SELECTOR_HEADER = "Wybierz szablon...";
 
 const NoteAddView = ({history}) => {
@@ -15,6 +17,7 @@ const NoteAddView = ({history}) => {
     const [currentTemplateIndex, setCurrentTemplateIndex] = useState(-1);
 
     const handleState = (templateArray) => {
+        setTitle(TITLE);
         setTemplates(templateArray);
     };
 

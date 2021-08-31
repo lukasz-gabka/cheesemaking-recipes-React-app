@@ -1,4 +1,4 @@
-import '../../../stylesheets/noteDelete.css';
+import '../../../stylesheets/accordion.css';
 import { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';

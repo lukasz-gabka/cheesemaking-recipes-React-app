@@ -21,7 +21,7 @@ const Note = ({content, history}) =>{
         <>
             <Form>
                 <Form.Control 
-                    className="text-center mx-auto my-5 addNoteInput fextField title" 
+                    className="text-center mx-auto my-5 addEntityInput fextField title" 
                     type="text" 
                     value={name}
                     placeholder="Wpisz nazwę notatki..."

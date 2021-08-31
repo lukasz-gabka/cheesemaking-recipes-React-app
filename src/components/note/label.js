@@ -15,7 +15,7 @@ const Label = ({content, inputs, categoryNumber, inputNumber, setInputs}) =>{
             </p>
 
             <Form.Control 
-                className="d-inline-block addNoteInput fextField" 
+                className="d-inline-block addEntityInput fextField" 
                 as="textarea" 
                 rows="1"
                 value={inputs[inputName]}

@@ -8,7 +8,7 @@ const AddCategoryButton = ({list, setList}) => {
     };
 
     return (
-        <Button type="button" className="addCategoryItem" onClick={() => handleAddCategory()}>
+        <Button type="button" className="mb-5 addCategoryItem navButton button" onClick={() => handleAddCategory()}>
             Dodaj kategorię
         </Button>
     );

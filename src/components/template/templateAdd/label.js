@@ -11,7 +11,7 @@ const Label = ({list, setList, categoryIndex, index}) => {
         <Form.Control
             type="text" 
             value={list[categoryIndex].labels[index].name}
-            className="text-center my-5 addNoteTitle" 
+            className="text-center mx-5 my-5 addEntityInput fextField" 
             placeholder="Wpisz nazwę pola..."
             onChange={(e) => handleChange(e)}
         />

@@ -13,7 +13,7 @@ const AddLabelButton = ({list, setList, categoryIndex}) => {
     };
 
     return (
-        <Button type="button" className="addCategoryItem" onClick={() => handleAddLabel()}>
+        <Button type="button" className="addCategoryItem navButton button" onClick={() => handleAddLabel()}>
             Dodaj pole
         </Button>
     );

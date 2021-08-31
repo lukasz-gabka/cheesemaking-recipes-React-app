@@ -1,4 +1,3 @@
-import '../../../stylesheets/noteDisplay.css';
 import { useEffect, useState } from 'react';
 import { setTitle } from '../../../services/titleHandler';
 import { mountInputs, handleNotes } from '../../../services/entityHandler';

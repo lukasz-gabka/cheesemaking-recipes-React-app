@@ -1,9 +1,8 @@
 import '../stylesheets/modal.css';
 import Modal from 'react-bootstrap/Modal';
-import { handleDeleteNote } from '../services/entityHandler';
 import Button from 'react-bootstrap/Button';
 
-const DeleteModal = ({isModal, setIsModal, id, history}) => (
+const DeleteModal = ({isModal, setIsModal, id, history, action}) => (
     <Modal
         show={isModal}
         onHide={() => setIsModal(false)}
@@ -25,7 +24,7 @@ const DeleteModal = ({isModal, setIsModal, id, history}) => (
 
             <Button 
                 className="mx-1 navButton button deleteButton" 
-                onClick={() => handleDeleteNote(id, history)}
+                onClick={() => action(id, history)}
             >
                 Usuń
             </Button>

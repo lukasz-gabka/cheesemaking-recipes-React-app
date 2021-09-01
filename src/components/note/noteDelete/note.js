@@ -6,6 +6,7 @@ import ExpandButton from '../../expandButton';
 import Button from 'react-bootstrap/Button';
 import Category from './category';
 import DeleteModal from '../../deleteModal';
+import {handleDeleteNote} from '../../../services/entityHandler';
 
 const Note = ({note, history}) => {
     const [isModal, setIsModal] = useState(false);
@@ -16,8 +17,10 @@ const Note = ({note, history}) => {
             <Card>
                 <Card.Header className="accordionHeader">
                     <p>{note.name}</p>
+
                     <div>
                         <ExpandButton eventKey={note.id}>Click</ExpandButton>
+
                         <Button 
                             className="mx-1 navButton button deleteButton" 
                             type="button" 
@@ -27,8 +30,8 @@ const Note = ({note, history}) => {
                         </Button>
                     </div>
                 </Card.Header>
-                
             </Card>
+
             <Accordion.Collapse eventKey={note.id}>
                 <Card.Body>
                     {note.template.categories.map(
@@ -37,7 +40,14 @@ const Note = ({note, history}) => {
                 </Card.Body>
             </Accordion.Collapse>
         </Accordion>
-        <DeleteModal isModal={isModal} setIsModal={setIsModal} id={note.id} history={history} />
+
+        <DeleteModal 
+            isModal={isModal} 
+            setIsModal={setIsModal} 
+            id={note.id} 
+            history={history} 
+            action={handleDeleteNote}
+        />
         </>
     );
 };

@@ -1,11 +1,10 @@
+import '../../../stylesheets/selector.css';
 import { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
 import Selector from '../selector';
 
 const NotePagination = ({notes, index, lastIndex, setIndex }) => {
     const [isFirstDisabled, setIsFirstDisabled] = useState(false);
-    const [isPreviousDisabled, setIsPreviousDisabled] = useState(false);
-    const [isNextDisabled, setIsNextDisabled] = useState(false);
     const [isLastDisabled, setIsLastDisabled] = useState(false);
     const [selectedOption, setSelectedOption] = useState(0);
 
@@ -17,17 +16,13 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
     useEffect(() => {
         if (index === 0) {
             setIsFirstDisabled(true);
-            setIsPreviousDisabled(true);
         } else {
             setIsFirstDisabled(false);
-            setIsPreviousDisabled(false);
         }
 
         if  (index === lastIndex) {
-            setIsNextDisabled(true);
             setIsLastDisabled(true);
         } else {
-            setIsNextDisabled(false);
             setIsLastDisabled(false);
         }
     }, [index, lastIndex])
@@ -35,14 +30,16 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
     return (
         <Pagination className="justify-content-center">
             <Pagination.Item 
+                className="paginationIcon"
                 disabled={isFirstDisabled} 
                 onClick={() => handleClick(0)}
             >
-                {'<<'}
+                &#x0226A;
             </Pagination.Item>
 
             <Pagination.Item 
-                disabled={isPreviousDisabled}
+                className="paginationIcon"
+                disabled={isFirstDisabled}
                 onClick={() => handleClick(index - 1)}
             >
                 {'<'}
@@ -56,17 +53,19 @@ const NotePagination = ({notes, index, lastIndex, setIndex }) => {
             />
 
             <Pagination.Item 
-                disabled={isNextDisabled}
+                className="paginationIcon"
+                disabled={isLastDisabled}
                 onClick={() => handleClick(index + 1)}
             >
                 {'>'}
             </Pagination.Item>
 
             <Pagination.Item 
-            disabled={isLastDisabled}
+                className="paginationIcon"
+                disabled={isLastDisabled}
                 onClick={() => handleClick(lastIndex)}
             >
-                {'>>'}
+                &#x0226B;
             </Pagination.Item>
         </Pagination>
     );

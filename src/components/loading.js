@@ -3,8 +3,13 @@ import ReactLoading from 'react-loading';
 const Loading = () => {
     return (
     <div id="loading">
-        <ReactLoading id="spinner" type="spinningBubbles" color="#000000" height={100}  width={100} />
-        <p>WCZYTYWANIE</p>
+        <ReactLoading 
+            id="spinner" 
+            type="spinningBubbles" 
+            color="#f2a359" 
+            height={130}  
+            width={130} 
+        />
     </div>
     );
 }

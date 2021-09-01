@@ -1,17 +1,26 @@
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-const NavSectionPublic = (props) => {
-    return (
-        <>
-            <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/logowanie">
-                Logowanie
-            </Nav.Link>
-            <Nav.Link as={NavLink} activeClassName="NavLinkActive" to="/rejestracja">
-                Rejestracja
-            </Nav.Link>
-        </>
-    );
-}
+const NavSectionPublic = () => (
+    <>
+        <Nav.Link 
+            className="mx-1 navButton" 
+            as={NavLink} 
+            activeClassName="navButtonActive" 
+            to="/logowanie"
+        >
+            Logowanie
+        </Nav.Link>
+
+        <Nav.Link 
+            className="mx-1 navButton" 
+            as={NavLink} 
+            activeClassName="navButtonActive" 
+            to="/rejestracja"
+        >
+            Rejestracja
+        </Nav.Link>
+    </>
+);
 
 export default NavSectionPublic;

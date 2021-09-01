@@ -3,11 +3,14 @@ import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { useEffect, useState } from 'react';
-import Selector from './selector';
+import Selector from '../selector';
 import Note from './note';
 import { handleNotes } from '../../../services/entityHandler';
+import { setTitle } from '../../../services/titleHandler';
 
 const URI = "https://localhost:5001/note";
+const TITLE = "Modyfikuj notatki";
+const SELECTOR_HEADER = "Wybierz notatkę...";
 
 const NoteModifyView = ({history}) => {
     const [notes, setNotes] = useState(null);
@@ -18,16 +21,18 @@ const NoteModifyView = ({history}) => {
     };
 
     useEffect(() => {
+        setTitle(TITLE);
         handleNotes(URI, handleState, history);
     }, [currentNoteIndex, history]);
 
     return (
-        <Container className="my-5 mx-auto">
+        <Container className="my-5 mx-auto mainContent">
             <Row>
                 <Col>
-                    {notes && <Selector notes={notes} 
+                    {notes && <Selector entities={notes} 
                                 selectedOption={currentNoteIndex} 
                                 setIndex={setCurrentNoteIndex} 
+                                header={SELECTOR_HEADER}
                               />
                     }
                 </Col>

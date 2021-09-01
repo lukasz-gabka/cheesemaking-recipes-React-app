@@ -1,3 +1,4 @@
+import '../../../stylesheets/form.css';
 import Category from "../category";
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
@@ -20,9 +21,9 @@ const Note = ({content, history}) =>{
         <>
             <Form>
                 <Form.Control 
+                    className="text-center mx-auto my-5 addEntityInput fextField title" 
                     type="text" 
                     value={name}
-                    className="text-center mx-auto my-5 addNoteTitle" 
                     placeholder="Wpisz nazwę notatki..."
                     onChange={e => setName(e.target.value)}
                 />
@@ -38,6 +39,7 @@ const Note = ({content, history}) =>{
                 )}
 
                 <Button 
+                    className="navButton button"
                     type="button" 
                     onClick={() => handleUpdateNote(history, inputs, name, content.id)}
                 >

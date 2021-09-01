@@ -4,8 +4,7 @@ import { authRequest } from "./request";
 
 const URL = 'https://localhost:5001/template/';
 
-export const saveTemplate = async (e, inputs, name) => {
-    e.preventDefault();
+export const saveTemplate = async (inputs, name) => {
     const body = prepareTemplate(inputs, name);
 
     if (body) {

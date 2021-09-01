@@ -4,7 +4,7 @@ const Category = ({content, inputs, categoryNumber, setInputs}) =>{
     var inputNumber = 1;
     return (
         <div className="mb-5">
-            <h2 className="mb-3">{content.name}</h2>
+            <p className="mb-3 title">{content.name}</p>
             {content.labels.map((label, index) => (
                 <Label 
                     categoryNumber={categoryNumber} 

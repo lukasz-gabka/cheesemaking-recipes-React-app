@@ -3,8 +3,7 @@ import { authRequest } from "./request";
 
 const URL = 'https://localhost:5001/note/';
 
-export const saveNote = async (e, inputs, name, templateId) => {
-    e.preventDefault();
+export const saveNote = async (inputs, name, templateId) => {
     const body = prepareNote(inputs, name);
 
     if (body) {

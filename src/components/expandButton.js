@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
 
 const COLLAPSED = "Pogląd";
 const EXPANDED = "Ukryj";
@@ -13,7 +13,13 @@ const ExpandButton = ({eventKey }) => {
   });
   
   return (
-    <Button type="button" onClick={decoratedOnClick}>{text}</Button>
+    <Button 
+      className="navButton button mx-1" 
+      type="button" 
+      onClick={decoratedOnClick}
+    >
+      {text}
+    </Button>
   );
 };
 

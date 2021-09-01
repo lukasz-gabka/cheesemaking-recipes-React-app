@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import '../stylesheets/form.css';
+import React, { useState, useEffect } from 'react';
+import { setTitle } from '../services/titleHandler';
+import { validateLogin } from '../services/validation';
 import request from '../services/request';
 import setCookie from '../services/cookies';
 import { showNotification, SUCCESS, LOGIN_SUCCESS, STATUS_RED, 
     STATUS_GREEN, ERROR } from '../services/notifications';
-import { validateLogin } from '../services/validation';
 import { redirectToHome } from '../services/redirection';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { withRouter } from 'react-router-dom';
 
-const URL = "https://localhost:5001/user/login";
+const URI = "https://localhost:5001/user/login";
+const TITLE = "Logowanie";
 
 function Login({history, setIsAuthenticated}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(() => setTitle(TITLE), []);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -26,7 +31,7 @@ function Login({history, setIsAuthenticated}) {
                 email,
                 password
             };
-            const token = await request(URL, 'POST', requestBody);
+            const token = await request(URI, 'POST', requestBody);
             setCookie(token);
             setIsAuthenticated(true);
             showNotification(SUCCESS, LOGIN_SUCCESS, STATUS_GREEN);
@@ -37,19 +42,37 @@ function Login({history, setIsAuthenticated}) {
     }
 
     return (
-        <Container className="my-5 mx-auto">
-            <Form>
-                <Form.Group controlId="loginFormEmail">
+        <Container className="my-5">
+            <Form className="mainContent mx-auto formContent">
+                <Form.Group className="mb-4 inputGroup" controlId="loginFormEmail">
                     <Form.Label>Adres e-mail</Form.Label>
-                    <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} />
+
+                    <Form.Control 
+                        className="fextField"
+                        type="email" 
+                        value={email} 
+                        onChange={e => setEmail(e.target.value)} 
+                    />
                 </Form.Group>
 
-                <Form.Group controlId="loginFormPassword">
+                <Form.Group className="mb-4 inputGroup" controlId="loginFormPassword">
                     <Form.Label>Hasło</Form.Label>
-                    <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
+
+                    <Form.Control 
+                        className="fextField"
+                        type="password" 
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)} 
+                    />
                 </Form.Group>
 
-                <Button type="submit" onClick={e => handleLogin(e)}>Zaloguj</Button>
+                <Button 
+                    className="navButton button" 
+                    type="submit" 
+                    onClick={(e) => handleLogin(e)}
+                >
+                    Zaloguj
+                </Button>
             </Form>
         </Container>
     )

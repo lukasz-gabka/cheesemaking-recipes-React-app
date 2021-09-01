@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import Category from "../category";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { useState, useEffect } from "react";
 import { saveNote } from "../../../services/handleAddNote";
-import { ADD_NOTES_ERROR, ADD_NOTES_SUCCESS, showNotification, 
+import { showNotification, ADD_NOTES_ERROR, ADD_NOTES_SUCCESS, 
     STATUS_RED, STATUS_GREEN, SUCCESS, ERROR } from "../../../services/notifications";
 import { redirectToHome } from "../../../services/redirection";
+import Form from 'react-bootstrap/Form';
+import Category from "../category";
+import Button from 'react-bootstrap/Button';
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});
@@ -23,13 +23,14 @@ const Note = ({content, history}) =>{
             });
             categoryNumber++;
         });
+
         setInputs(inputNames);
         setName('');
     }, [content.categories]);
 
-    const handleAddNote = async (e) => {
+    const handleAddNote = async () => {
         try {
-            const result = await saveNote(e, inputs, name, content.id);
+            const result = await saveNote(inputs, name, content.id);
             if (result) {
                 showNotification(SUCCESS, ADD_NOTES_SUCCESS, STATUS_GREEN);
                 redirectToHome(history);
@@ -47,10 +48,11 @@ const Note = ({content, history}) =>{
                         <Form.Control 
                             type="text" 
                             value={name}
-                            className="text-center mx-auto my-5 addNoteTitle" 
+                            className="text-center mx-auto my-5 addEntityInput fextField title" 
                             placeholder="Wpisz nazwę notatki..."
                             onChange={e => setName(e.target.value)}
                         />
+
                         {content.categories.map((category, index) => (
                             <Category 
                                 categoryNumber={categoryNumber++} 
@@ -60,7 +62,8 @@ const Note = ({content, history}) =>{
                                 content={category} 
                             />
                         ))}
-                        <Button type="submit" onClick={(e) => handleAddNote(e)}>
+                        
+                        <Button className="navButton button" type="button" onClick={() => handleAddNote()}>
                             Zapisz notatkę
                         </Button>
                     </Form>

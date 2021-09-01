@@ -1,3 +1,4 @@
+import '../../../stylesheets/form.css';
 import Form from 'react-bootstrap/Form';
 
 const Category = ({list, setList, index}) => {
@@ -5,7 +6,7 @@ const Category = ({list, setList, index}) => {
         <Form.Control
             type="text" 
             value={list[index].name}
-            className="text-center my-5 addNoteTitle" 
+            className="text-center my-5 addEntityInput fextField" 
             placeholder="Wpisz nazwę kategorii..."
             onChange={(e) => {
                 var newList = [...list];

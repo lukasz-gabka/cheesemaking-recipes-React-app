@@ -1,24 +1,29 @@
-import { useState } from "react";
-import { Col } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import { withRouter } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import AddCategoryButton from "./addCategoryButton";
-import Button from 'react-bootstrap/Button';
+import { useState, useEffect } from "react";
+import { setTitle } from "../../../services/titleHandler";
 import { saveTemplate } from "../../../services/handleAddTemplate";
 import { showNotification, SUCCESS, STATUS_GREEN, STATUS_RED, ERROR, ADD_TEMPLATES_ERROR, 
     ADD_TEMPLATES_SUCCESS } from "../../../services/notifications";
-import { redirectToHome } from "../../../services/redirection";    
+import { redirectToHome } from "../../../services/redirection";  
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import { Col } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import Template from "./template";
+import AddCategoryButton from "./addCategoryButton"; 
+import Button from 'react-bootstrap/Button'; 
+import { withRouter } from 'react-router-dom';
+
+const TITLE = "Dodaj szablon";
 
 const TemplateAddView = ({history}) => {
     const [name, setName] = useState('');
     const [list, setList] = useState([]);
 
-    const handleAddTemplate = async (e) => {
+    useEffect(() => setTitle(TITLE), []);
+
+    const handleAddTemplate = async () => {
         try {
-            const result = await saveTemplate(e, list, name);
+            const result = await saveTemplate(list, name);
             if (result) {
                 showNotification(SUCCESS, ADD_TEMPLATES_SUCCESS, STATUS_GREEN);
                 redirectToHome(history);
@@ -29,13 +34,13 @@ const TemplateAddView = ({history}) => {
     };
 
     return (
-        <Container className="my-5 mx-auto">
+        <Container className="my-5 mx-auto mainContent">
             <Row>
                 <Col>
                     <Form.Control 
                         type="text" 
                         value={name}
-                        className="text-center mx-auto my-5 addNoteTitle" 
+                        className="text-center mx-auto my-5 addEntityInput fextField title" 
                         placeholder="Wpisz nazwę szablonu..."
                         onChange={e => setName(e.target.value)}
                     />
@@ -53,7 +58,7 @@ const TemplateAddView = ({history}) => {
             <Row>
                 <Col className="d-flex justify-content-center">
                     {Object.keys(list).length > 0 &&
-                        <Button type="button" onClick={(e) => handleAddTemplate(e)}>
+                        <Button className="mt-5 navButton button" type="button" onClick={() => handleAddTemplate()}>
                             Zapisz notatkę
                         </Button>
                     }

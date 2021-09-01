@@ -1,19 +1,20 @@
 import Form from 'react-bootstrap/Form';
 
-const Selector = ({selectedOption, entities, setSelectedOption, setIndex}) => {
+const Selector = ({selectedOption, entities, setSelectedOption, setIndex, header}) => {
     return (
-        <Form.Control 
+        <Form.Select 
+            className="paginationElement selector"
             value={selectedOption} 
-            as="select" 
             onChange={(e) => {
                 setIndex && setIndex(parseInt(e.target.value));
-                setSelectedOption(e.target.value);
+                setSelectedOption && setSelectedOption(e.target.value);
             }}
         >
+            {header && <option disabled key="-1" value="-1">{header}</option>}
             {entities && entities.map((entity, index) => (
                 <option key={index} value={index}>{entity.name}</option>
                 ))}
-        </Form.Control>
+        </Form.Select>
     );
 };
 

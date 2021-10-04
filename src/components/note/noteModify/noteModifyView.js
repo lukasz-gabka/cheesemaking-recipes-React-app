@@ -7,8 +7,9 @@ import Selector from '../selector';
 import Note from './note';
 import { handleNotes } from '../../../services/entityHandler';
 import { setTitle } from '../../../services/titleHandler';
+import { getNoteUrl } from '../../../services/url';
 
-const URI = "https://localhost:5001/note";
+const URL = getNoteUrl();
 const TITLE = "Modyfikuj notatki";
 const SELECTOR_HEADER = "Wybierz notatkę...";
 
@@ -22,7 +23,7 @@ const NoteModifyView = ({history}) => {
 
     useEffect(() => {
         setTitle(TITLE);
-        handleNotes(URI, handleState, history);
+        handleNotes(URL, handleState, history);
     }, [currentNoteIndex, history]);
 
     return (

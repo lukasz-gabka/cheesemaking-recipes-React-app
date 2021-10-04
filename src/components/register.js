@@ -10,8 +10,9 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
+import { getRegisterUrl } from '../services/url';
 
-const URI = "https://localhost:5001/user/register";
+const URL = getRegisterUrl();
 const TITLE = "Rejestracja";
 
 function Register({history}) {
@@ -34,7 +35,7 @@ function Register({history}) {
                 password,
                 confirmPassword
             };
-            await request(URI, 'POST', requestBody);
+            await request(URL, 'POST', requestBody);
             showNotification(SUCCESS, REGISTER_SUCCESS, STATUS_GREEN);
             redirectToHome(history);
         } catch (e) {

@@ -6,8 +6,9 @@ import Row from 'react-bootstrap/Row';
 import { Col } from 'react-bootstrap';
 import Note from "./note";
 import { withRouter } from 'react-router-dom';
+import { getNoteUrl } from "../../../services/url";
 
-const URI = "https://localhost:5001/note";
+const URL = getNoteUrl();
 const TITLE= "Usuń notatki";
 
 const NoteDeleteView = ({history}) => {
@@ -20,7 +21,7 @@ const NoteDeleteView = ({history}) => {
 
     useEffect(() => {
         setTitle(TITLE);
-        handleNotes(URI, handleState, history);
+        handleNotes(URL, handleState, history);
     }, [history]);
 
     return (

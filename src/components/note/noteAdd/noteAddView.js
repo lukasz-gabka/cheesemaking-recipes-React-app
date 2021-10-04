@@ -7,8 +7,9 @@ import { Col } from 'react-bootstrap';
 import Selector from '../selector';
 import Note from './note';
 import { withRouter } from 'react-router-dom';
+import { getTemplateUrl } from '../../../services/url';
 
-const URI = "https://localhost:5001/template";
+const URL = getTemplateUrl();
 const TITLE = "Dodaj notatkę";
 const SELECTOR_HEADER = "Wybierz szablon...";
 
@@ -22,7 +23,7 @@ const NoteAddView = ({history}) => {
     };
 
     useEffect(() => {
-        handleTemplates(URI, handleState, history);
+        handleTemplates(URL, handleState, history);
     }, [history]);
 
     return (

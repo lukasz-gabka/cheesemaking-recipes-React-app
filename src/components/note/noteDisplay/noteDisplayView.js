@@ -7,8 +7,9 @@ import { Col } from 'react-bootstrap';
 import NotePagination from './pagination';
 import Note from './note';
 import { withRouter } from 'react-router-dom';
+import { getNoteUrl } from '../../../services/url';
 
-const URI = "https://localhost:5001/note";
+const URL = getNoteUrl();
 const TITLE = "Przeglądaj notatki";
 
 const NoteDisplayView = ({history}) => {
@@ -24,7 +25,7 @@ const NoteDisplayView = ({history}) => {
 
     useEffect(() => {
         setTitle(TITLE);
-        handleNotes(URI, handleState, history);
+        handleNotes(URL, handleState, history);
     }, [currentNoteIndex, history]);
 
     return (

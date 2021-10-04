@@ -7,8 +7,9 @@ import Row from 'react-bootstrap/Row';
 import { Col } from 'react-bootstrap';
 import Template from "./template";
 import { withRouter } from 'react-router-dom';
+import { getTemplateUrl } from '../../../services/url';
 
-const URI = "https://localhost:5001/template";
+const URL = getTemplateUrl();
 const TITLE = "Wykaz szablonów";
 
 const TemplateListView = ({history}) => {
@@ -20,7 +21,7 @@ const TemplateListView = ({history}) => {
     };
 
     useEffect(() => {
-        handleTemplates(URI, handleState, history);
+        handleTemplates(URL, handleState, history);
     }, [history]);
 
     return (

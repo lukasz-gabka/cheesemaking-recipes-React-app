@@ -1,7 +1,8 @@
 import { showNotification, INPUTS_EMPTY, STATUS_YELLOW, WARNING } from "./notifications";
 import { authRequest } from "./request";
+import { getNoteUrl } from "./url";
 
-const URL = 'https://localhost:5001/note/';
+const URL = getNoteUrl();
 
 export const saveNote = async (inputs, name, templateId) => {
     const body = prepareNote(inputs, name);

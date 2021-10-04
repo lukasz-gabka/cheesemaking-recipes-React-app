@@ -3,9 +3,10 @@ import { showNotification, NOTES_ERROR, NOTES_WARNING, STATUS_RED, STATUS_YELLOW
     WARNING, TEMPLATES_ERROR, TEMPLATES_WARNING, NOTES_DELETE_ERROR, TEMPLATES_DELETE_ERROR, 
     NOTES_DELETE_SUCCESS, TEMPLATES_DELETE_SUCCESS, SUCCESS, STATUS_GREEN } from "./notifications";
 import { redirectToHome } from "./redirection";    
+import { getNoteUrl, getTemplateUrl } from "./url";
 
 const noteInfo = {
-    url: "https://localhost:5001/note/",
+    url: getNoteUrl(),
     warning: NOTES_WARNING,
     deleteSuccess: NOTES_DELETE_SUCCESS,
     deleteError: NOTES_DELETE_ERROR,
@@ -13,7 +14,7 @@ const noteInfo = {
 };
 
 const templateInfo = {
-    url: "https://localhost:5001/template/",
+    url: getTemplateUrl(),
     warning: TEMPLATES_WARNING,
     deleteSuccess: TEMPLATES_DELETE_SUCCESS,
     deleteError: TEMPLATES_DELETE_ERROR,

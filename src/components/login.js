@@ -11,8 +11,9 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
+import { getLoginUrl } from '../services/url';
 
-const URI = "https://localhost:5001/user/login";
+const URL = getLoginUrl();
 const TITLE = "Logowanie";
 
 function Login({history, setIsAuthenticated}) {
@@ -31,7 +32,7 @@ function Login({history, setIsAuthenticated}) {
                 email,
                 password
             };
-            const token = await request(URI, 'POST', requestBody);
+            const token = await request(URL, 'POST', requestBody);
             setCookie(token);
             setIsAuthenticated(true);
             showNotification(SUCCESS, LOGIN_SUCCESS, STATUS_GREEN);

@@ -1,6 +1,7 @@
 import { getCookie } from "./cookies";
+import { getAuthorizeUrl } from "./url";
 
-const url = "https://localhost:5001/user/authorize";
+const URL = getAuthorizeUrl();
 var requestOptions = {
     method: 'GET',
     headers: {Authorization: ''}
@@ -13,7 +14,7 @@ const authenticate = async () => {
     }
 
     requestOptions.headers.Authorization = 'Bearer ' + token;
-    const response = await fetch(url, requestOptions);
+    const response = await fetch(URL, requestOptions);
     if (response.ok) {
         return true;
     }

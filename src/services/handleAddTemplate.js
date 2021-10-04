@@ -1,8 +1,9 @@
 import { showNotification, INPUTS_EMPTY, STATUS_YELLOW, WARNING, 
     LABELS_EMPTY } from "./notifications";
 import { authRequest } from "./request";
+import { getTemplateUrl } from "./url";
 
-const URL = 'https://localhost:5001/template/';
+const URL = getTemplateUrl();
 
 export const saveTemplate = async (inputs, name) => {
     const body = prepareTemplate(inputs, name);

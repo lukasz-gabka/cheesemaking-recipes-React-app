@@ -2,8 +2,9 @@ import { showNotification, INPUTS_EMPTY, STATUS_YELLOW, WARNING, SUCCESS, STATUS
     ERROR, STATUS_RED, MODIFY_NOTES_ERROR, MODIFY_NOTES_SUCCESS} from "./notifications";
 import { redirectToHome } from "./redirection";
 import { authRequest } from "./request";
+import { getNoteUrl } from "./url";
 
-const URL = 'https://localhost:5001/note/';
+const URL = getNoteUrl();
 
 export const handleUpdateNote = async (history, inputs, name, id) => {
     try {

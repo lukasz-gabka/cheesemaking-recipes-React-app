@@ -10,8 +10,8 @@ import { Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Template from "./template";
 import AddCategoryButton from "./addCategoryButton"; 
-import Button from 'react-bootstrap/Button'; 
 import { withRouter } from 'react-router-dom';
+import SubmitButton from "../../submitButton";
 
 const TITLE = "Dodaj szablon";
 
@@ -58,9 +58,7 @@ const TemplateAddView = ({history}) => {
             <Row>
                 <Col className="d-flex justify-content-center">
                     {Object.keys(list).length > 0 &&
-                        <Button className="mt-5 navButton button" type="button" onClick={() => handleAddTemplate()}>
-                            Zapisz notatkę
-                        </Button>
+                        <SubmitButton handleEvent={handleAddTemplate} name="Zapisz notatkę" classString="mt-5" />
                     }
                 </Col>
             </Row>

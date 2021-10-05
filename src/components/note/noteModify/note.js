@@ -2,9 +2,9 @@ import '../../../stylesheets/form.css';
 import Category from "../category";
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
 import { handleUpdateNote } from "../../../services/updateNoteHandler";
 import { nameInputs } from "../../../services/noteHandler";
+import SubmitButton from '../../submitButton';
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});
@@ -38,13 +38,7 @@ const Note = ({content, history}) =>{
                     />
                 )}
 
-                <Button 
-                    className="navButton button"
-                    type="button" 
-                    onClick={() => handleUpdateNote(history, inputs, name, content.id)}
-                >
-                    Zapisz zmiany
-                </Button>
+                <SubmitButton handleEvent={() => handleUpdateNote(history, inputs, name, content.id)} name="Zapisz zmiany" />
             </Form>
         </>
     );

@@ -8,9 +8,9 @@ import { showNotification, REGISTER_SUCCESS,
 import { redirectToHome } from '../services/redirection';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 import { getRegisterUrl } from '../services/url';
+import SubmitButton from './submitButton';
 
 const URL = getRegisterUrl();
 const TITLE = "Rejestracja";
@@ -23,9 +23,7 @@ function Register({history}) {
 
     useEffect(() => setTitle(TITLE), []);
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-
+    const handleRegister = async () => {
         try {
             validateRegister(email, name, password, confirmPassword);
 
@@ -90,13 +88,7 @@ function Register({history}) {
                     />
                 </Form.Group>
 
-                <Button 
-                    className="navButton button" 
-                    type="submit" 
-                    onClick={(e) => handleRegister(e)}
-                >
-                    Zarejestruj
-                </Button>
+                <SubmitButton handleEvent={handleRegister} name="Zarejestruj" />
             </Form>
         </Container>
     )

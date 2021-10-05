@@ -5,7 +5,7 @@ import { showNotification, ADD_NOTES_ERROR, ADD_NOTES_SUCCESS,
 import { redirectToHome } from "../../../services/redirection";
 import Form from 'react-bootstrap/Form';
 import Category from "../category";
-import Button from 'react-bootstrap/Button';
+import SubmitButton from "../../submitButton";
 
 const Note = ({content, history}) =>{
     const [inputs, setInputs] = useState({});
@@ -62,10 +62,8 @@ const Note = ({content, history}) =>{
                                 content={category} 
                             />
                         ))}
-                        
-                        <Button className="navButton button" type="button" onClick={() => handleAddNote()}>
-                            Zapisz notatkę
-                        </Button>
+
+                        <SubmitButton handleEvent={handleAddNote} name="Zapisz notatkę" />
                     </Form>
                 </>
             }   

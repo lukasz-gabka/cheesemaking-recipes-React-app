@@ -1,6 +1,7 @@
 import '../stylesheets/modal.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import SubmitButton from './submitButton';
 
 const DeleteModal = ({isModal, setIsModal, id, history, action}) => (
     <Modal
@@ -22,12 +23,7 @@ const DeleteModal = ({isModal, setIsModal, id, history, action}) => (
                 Nie usuwaj
             </Button>
 
-            <Button 
-                className="mx-1 navButton button deleteButton" 
-                onClick={() => action(id, history)}
-            >
-                Usuń
-            </Button>
+            <SubmitButton handleEvent={() => action(id, history)} name="Usuń" classString="mx-1 deleteButton" />
         </Modal.Footer>
     </Modal>
 );

@@ -9,9 +9,9 @@ import { showNotification, SUCCESS, LOGIN_SUCCESS, STATUS_RED,
 import { redirectToHome } from '../services/redirection';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 import { getLoginUrl } from '../services/url';
+import SubmitButton from './submitButton';
 
 const URL = getLoginUrl();
 const TITLE = "Logowanie";
@@ -22,9 +22,7 @@ function Login({history, setIsAuthenticated}) {
 
     useEffect(() => setTitle(TITLE), []);
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
+    const handleLogin = async () => {
         try {
             validateLogin(email, password);
 
@@ -67,13 +65,7 @@ function Login({history, setIsAuthenticated}) {
                     />
                 </Form.Group>
 
-                <Button 
-                    className="navButton button" 
-                    type="submit" 
-                    onClick={(e) => handleLogin(e)}
-                >
-                    Zaloguj
-                </Button>
+                <SubmitButton handleEvent={handleLogin} name="Zaloguj" />
             </Form>
         </Container>
     )
